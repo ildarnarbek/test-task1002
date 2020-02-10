@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic"
+      rel="stylesheet"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic"
+      rel="stylesheet"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+        <div class="logo-container">
+            <img src="src/logo.png" alt="">
+        </div>
+    </header>
+    <main>
+      <section>
+        <h1>Checkout</h1>
+        <ul>
+          <li>
+            <h2>Products</h2>
+
+            <table>
+              <tr>
+                <td>
+                  <a href="#"
+                    >Apple - iPad with Retina display Wi-Fi - 32 Gb - White</a
+                  >
+                </td>
+                <td>$499.00</td>
+              </tr>
+              <tr>
+                <td><a href="#">16GB A Series Walkman Video MP3</a></td>
+                <td>$130.00</td>
+              </tr>
+            </table>
+          </li>
+          <li>
+            <h2>Shipping method</h2>
+            <table>
+              <tr>
+                <td>FedEx</td>
+                <td>$13.99</td>
+              </tr>
+            </table>
+          </li>
+          <li>
+            <h2>Payment method</h2>
+            <button class="payment-type select">Credit card</button>
+            <button class="payment-type">Gift card</button>
+            <button class="payment-type">PayPal</button>
+          </li>
+        </ul>
+        <div class="creditcard">
+          <form action="">
+            <fieldset>
+              <label for="card-number">
+                Card number <span class="required">*</span>
+              </label>
+
+              <input type="text" name="card-number" id="card-number" />
+
+              <label for="valid-thru"
+                >Valid thru (mm/yy) <span class="required">*</span></label
+              >
+              <input
+                type="text"
+                name="valid-thru-mm"
+                id="valid-thru"
+                maxlength="2"
+              />
+              &nbsp;/&nbsp;
+              <input
+                type="text"
+                name="valid-thru-yy"
+                id="valid-thru"
+                maxlength="2"
+              />
+
+              <label for="cardholders-name">
+                Cardholder's name <span class="required">*</span>
+              </label>
+              <input
+                type="text"
+                name="cardholders-name"
+                id="cardholders-name"
+              />
+            </fieldset>
+            <div class="cvv">
+              <label for="cvv-cvc" class="cvv">
+                CVV/CVC<span class="required">*</span>
+                <input type="number" name="cvv-cvc" id="cvv-cvc" size="3" />
+                <div class="help-img"></div>
+                <div class="help-info">
+                  <a
+                    href="https://www.cvvnumber.com/cvv.html"
+                    target="_blank"
+                    style="font-size:11px"
+                    >What is my CVV code?</a
+                  >
+                </div>
+              </label>
+            </div>
+          </form>
+        </div>
+        <div class="giftcard">
+          <form action="">
+            <fieldset>
+              <label for="gift-card-number"> Gift card number</label>
+              <input
+                type="text"
+                name="gift-card-number"
+                id="gift-card-number"
+              />
+              <label for="gift-card-pin"> Gift card pin</label>
+              <input type="password" name="gift-card-pin" id="gift-card-pin" />
+            </fieldset>
+          </form>
+        </div>
+        <div class="paypal">
+          <form action="">
+            <legend>Paypal authentification</legend>
+            <fieldset>
+              <label for="paypal-login">
+                Login <input type="text" name="paypal-login" id="paypal-login"
+              /></label>
+
+              <label for="paypal-password">
+                Password
+                <input
+                  type="password"
+                  name="paypal-password"
+                  id="paypal-password"
+              /></label>
+              <button class="login">Login</button>
+            </fieldset>
+            
+          </form>
+        </div>
+        <div class="accept-block">
+          <form action="">
+            <fieldset>
+              <input type="checkbox" name="accept" id="accept" />
+              <label for="accept"
+                >I accept the <a href="#">Terms and Conditions</a></label
+              >
+            </fieldset>
+            
+          </form>
+        </div>
+        <button class="order-btn">Place order ( )</button>
+      </section>
+    </main>
+  </body>
+</html>
