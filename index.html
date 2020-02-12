@@ -9,7 +9,6 @@
       href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic"
       rel="stylesheet"
     />
-
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=cyrillic"
       rel="stylesheet"
@@ -25,48 +24,43 @@
     <main>
       <section>
         <h1>Checkout</h1>
-        <ul>
-          <li>
-            <h2>Products</h2>
+        <article>
+          <h2>Products</h2>
+          <table>
+            <tr>
+              <td>
+                <a href="#"
+                  >Apple - iPad with Retina display Wi-Fi - 32 Gb - White</a
+                >
+              </td>
+              <td class="price-item-1">$499.00</td>
+            </tr>
+            <tr>
+              <td><a href="#">16GB A Series Walkman Video MP3</a></td>
+              <td class="price-item-2">$130.00</td>
+            </tr>
+          </table>
+        </article>
+        <article>
+          <h2>Shipping method</h2>
+          <table>
+            <tr>
+              <td>FedEx</td>
+              <td class="price-shipping-1">$13.99</td>
+            </tr>
+          </table>
+        </article>
+        <div>
+          <h2>Payment method</h2>
+          <button class="payment-type credit-card-tab select">Credit card</button>
+          <button class="payment-type gift-card-tab">Gift card</button>
+          <button class="payment-type pay-pal-tab">PayPal</button>
+        </div>
 
-            <table>
-              <tr>
-                <td>
-                  <a href="#"
-                    >Apple - iPad with Retina display Wi-Fi - 32 Gb - White</a
-                  >
-                </td>
-                <td class="price-item-1">$499.00</td>
-              </tr>
-              <tr>
-                <td><a href="#">16GB A Series Walkman Video MP3</a></td>
-                <td class="price-item-2">$130.00</td>
-              </tr>
-            </table>
-          </li>
-          <li>
-            <h2>Shipping method</h2>
-            <table>
-              <tr>
-                <td>FedEx</td>
-                <td class="price-shipping-1">$13.99</td>
-              </tr>
-            </table>
-          </li>
-          <li>
-            <h2>Payment method</h2>
-            <button class="payment-type credit-card select">Credit card</button>
-            <button class="payment-type gift-card">Gift card</button>
-            <button class="payment-type pay-pal">PayPal</button>
-          </li>
-        </ul>
-        <div class="creditcard show">
-          <form action="">
+        <form action="">
+          <div class="creditcard-block show">
             <fieldset>
-              <label for="card-number">
-                Card number <span class="required">*</span>
-              </label>
-
+              <label for="card-number">Card number</label>
               <input
                 type="text"
                 name="card-number"
@@ -79,9 +73,7 @@
                 Please use only numbers
               </div>
 
-              <label for="valid-thru">
-                Valid thru (mm/yy) <span class="required">*</span>
-              </label>
+              <label for="valid-thru">Valid thru (mm/yy)</label>
               <input
                 type="text"
                 name="valid-thru-mm"
@@ -102,9 +94,7 @@
                 Please use only numbers
               </div>
 
-              <label for="cardholders-name">
-                Cardholder's name <span class="required">*</span>
-              </label>
+              <label for="cardholders-name">Cardholder's name</label>
               <input
                 type="text"
                 name="cardholders-name"
@@ -113,37 +103,33 @@
               />
             </fieldset>
             <div class="cvv">
-              <label for="cvv-cvc" class="cvv">
-                CVV/CVC<span class="required">*</span>
-                <input
-                  type="text"
-                  name="cvv-cvc"
-                  id="cvv-cvc"
-                  maxlength="3"
-                  required
-                />
-                <div class="help-img">
-                  <div class="cvvCvcTooltip" id="cvvCvcTooltip">
-                    Please use only numbers
-                  </div>
-
-                  <div class="help-info">
-                    <img src="src/cvv.png" alt="" height="80px" width="80px" />
-                    <p>
-                      Turn your card over and look at the signature box. You
-                      should see either the entire 16-digit credit card number
-                      or just the last four digits followed by a special 3-digit
-                      code. This 3-digit code is your CVV number / Card Security
-                      Code.
-                    </p>
-                  </div>
+              <label for="cvv-cvc"> CVV/CVC</label>
+              <input
+                type="text"
+                name="cvv-cvc"
+                id="cvv-cvc"
+                maxlength="3"
+                required
+              />
+              <div class="cvvCvcTooltip" id="cvvCvcTooltip">
+                Please use only numbers
+              </div>
+              <div class="help-img">
+                <div class="help-info">
+                  <img src="src/cvv.png" alt="" height="80px" width="80px" />
+                  <p>
+                    Turn your card over and look at the signature box. You
+                    should see either the entire 16-digit credit card number or
+                    just the last four digits followed by a special 3-digit
+                    code. This 3-digit code is your CVV number / Card Security
+                    Code.
+                  </p>
                 </div>
-              </label>
+              </div>
             </div>
-          </form>
-        </div>
-        <div class="giftcard ">
-          <form action="">
+          </div>
+
+          <div class="giftcard-block ">
             <fieldset>
               <label for="gift-card-number"> Gift card number</label>
               <input
@@ -159,10 +145,8 @@
                 required
               />
             </fieldset>
-          </form>
-        </div>
-        <div class="paypal ">
-          <form action="">
+          </div>
+          <div class="paypal-block ">
             <legend>Paypal authentification</legend>
             <fieldset>
               <label for="paypal-login">
@@ -184,121 +168,125 @@
               /></label>
               <button class="login">Login</button>
             </fieldset>
-          </form>
-        </div>
-        <div class="accept-block">
-          <div class="termsAndConditions" name="termsAndConditions">
-            <h3>Terms and Conditions</h3>
-            <p>
-              Introduction: document governs website use; consent to website
-              document: implied; consent to website terms and conditions:
-              express; website user minimum age. Copyright notice: UCC copyright
-              notice; ownership of rights in website. Permission to use website:
-              licence to use website; no downloading; website use: permitted
-              purposes; no modification of website content; limitations on
-              licence to use website; redistributable content; suspension or
-              restriction of access to website. Misuse of website: acceptable
-              use: prohibitions; veracity of information supplied. Use on behalf
-              of organisation: use on behalf of another. Buyer registration and
-              accounts: provisions apply to markeplace buyers; buyer Account
-              eligibility (private individuals); buyer account registration
-              process. Seller registration and accounts: provisions apply to
-              marketplace sellers; account eligibility (businesses); account
-              eligibility (private individuals); seller account registration
-              process; seller account information updating. User login details:
-              provision of login details; user ID rules and impersonation;
-              password to be kept confidential; notify on disclosure of
-              password; responsibility for password loss. Cancellation and
-              suspension of account: rights of operator over account with paid
-              services; cancellation of website account with paid services by
-              user. Seller stores: registered sellers can create stores; how to
-              create a seller store; publication of seller store; website
-              operator rights in relation to seller store; period of publication
-              of seller store. Seller listings: registered sellers can create
-              listings; how to create a listing; publication of listings;
-              website operator rights in relation to listings; period of
-              publication of listings; veracity of listings; subject matter of
-              listings; listing categories; keeping listings up to date; listing
-              price currency. Product rules: permitted products; no services or
-              intangible products; prohibited products. The buying and selling
-              process: contracts between buyers and sellers. Terms and
-              conditions of sale: seller must create legal notices; seller legal
-              compliance; contract terms between buyers and sellers; distance
-              selling rules incorporated into contract; compliance with terms
-              and conditions of sale. Distance contracts: cancellation right:
-              marketplace distance sales: cancellation right for consumers;
-              marketplace distance sales: cancellation right for products;
-              marketplace distance sales: exercise of cancellation right;
-              marketplace distance sales: return of products upon cancellation;
-              marketplace distance sales: refund upon distance contract for
-              products cancellation; marketplace distance sales: diminished
-              value of product on cancellation; marketplace distance sales:
-              refund method; marketplace distance sales: refund timing for
-              products; marketplace distance sales: products excluded from right
-              of cancellation. Marketplace fees: marketplace seller payment
-              amounts; marketplace seller fees; marketplace seller commission;
-              amounts inclusive or exclusive of VAT; VAT deductions in
-              marketplace; obligation to provide evidence for tax compliance;
-              variation of fees; variation of commission rates. Payments:
-              payment of fees; disputed payments; unjustified charge-backs;
-              unpaid fees: withdrawal of services; right of set off. Our role:
-              acknowledgement of website operator role; provision subject to
-              limitations of liability. Our rights to use your content:
-              definition of user content; licence of user content; sub-licensing
-              of user content; right to bring proceedings in respect of user
-              content; waiver of moral rights in user content; user may edit own
-              content; delete etc user content on breach. Rules about your
-              content: user content warranty; no unlawful user content; user
-              content rules; civility and user content; hyperlinking and user
-              content; previous complaints and user content. Report abuse:
-              request to report abuse; how to report abuse. Limited warranties:
-              no warranties for information; right to discontinue website
-              publication; no implied warranties or representations relating to
-              website. Limitations and exclusions of liability: caveats to
-              limits of liability (with consumer protection); interpretation of
-              limits of liability; no liablity for free information or services;
-              no liability for force majeure; no liability for business losses;
-              no liability for loss of data or software (with consumer
-              protection); no liability for consequential loss (with consumer
-              protection); no personal liability; liability cap upon services
-              contract. Indemnity: indemnity from marketplace website users.
-              Breaches of these terms and conditions: consequences of breach;
-              non circumvention of measures upon breach. Third party websites:
-              third party websites: hyperlinks not recommendations; third party
-              websites: no control or liability. Trade marks: trade mark
-              ownership; third party trade marks on website. Variation: document
-              may be revised; variation of website document: unregistered users;
-              variation of website document: registered users. Assignment:
-              assignment by first party (with consumer rights); assignment by
-              second party. Severability: severability of whole; severability of
-              parts. Third party rights: third party rights: benefit; third
-              party rights: exercise of rights. Entire agreement: entire
-              agreement - use of website. Law and jurisdiction: governing law;
-              jurisdiction. Statutory and regulatory disclosures: ecommerce
-              regulations order process information; copy of document not filed;
-              language of document; ecommerce regulations: trade register;
-              ecommerce regulations: authorisation scheme; ecommerce
-              regulations: professionals; ecommerce regulations: code of
-              conduct; value added tax number; link to ODR website; name and URL
-              of ADR provider. Our details: website operator name; company
-              registration details; place of business; contact information.
-            </p>
           </div>
-          <form action="">
+          <div class="accept-block">
+            <div class="termsAndConditions" name="termsAndConditions">
+              <h3>Terms and Conditions</h3>
+              <p>
+                Introduction: document governs website use; consent to website
+                document: implied; consent to website terms and conditions:
+                express; website user minimum age. Copyright notice: UCC
+                copyright notice; ownership of rights in website. Permission to
+                use website: licence to use website; no downloading; website
+                use: permitted purposes; no modification of website content;
+                limitations on licence to use website; redistributable content;
+                suspension or restriction of access to website. Misuse of
+                website: acceptable use: prohibitions; veracity of information
+                supplied. Use on behalf of organisation: use on behalf of
+                another. Buyer registration and accounts: provisions apply to
+                markeplace buyers; buyer Account eligibility (private
+                individuals); buyer account registration process. Seller
+                registration and accounts: provisions apply to marketplace
+                sellers; account eligibility (businesses); account eligibility
+                (private individuals); seller account registration process;
+                seller account information updating. User login details:
+                provision of login details; user ID rules and impersonation;
+                password to be kept confidential; notify on disclosure of
+                password; responsibility for password loss. Cancellation and
+                suspension of account: rights of operator over account with paid
+                services; cancellation of website account with paid services by
+                user. Seller stores: registered sellers can create stores; how
+                to create a seller store; publication of seller store; website
+                operator rights in relation to seller store; period of
+                publication of seller store. Seller listings: registered sellers
+                can create listings; how to create a listing; publication of
+                listings; website operator rights in relation to listings;
+                period of publication of listings; veracity of listings; subject
+                matter of listings; listing categories; keeping listings up to
+                date; listing price currency. Product rules: permitted products;
+                no services or intangible products; prohibited products. The
+                buying and selling process: contracts between buyers and
+                sellers. Terms and conditions of sale: seller must create legal
+                notices; seller legal compliance; contract terms between buyers
+                and sellers; distance selling rules incorporated into contract;
+                compliance with terms and conditions of sale. Distance
+                contracts: cancellation right: marketplace distance sales:
+                cancellation right for consumers; marketplace distance sales:
+                cancellation right for products; marketplace distance sales:
+                exercise of cancellation right; marketplace distance sales:
+                return of products upon cancellation; marketplace distance
+                sales: refund upon distance contract for products cancellation;
+                marketplace distance sales: diminished value of product on
+                cancellation; marketplace distance sales: refund method;
+                marketplace distance sales: refund timing for products;
+                marketplace distance sales: products excluded from right of
+                cancellation. Marketplace fees: marketplace seller payment
+                amounts; marketplace seller fees; marketplace seller commission;
+                amounts inclusive or exclusive of VAT; VAT deductions in
+                marketplace; obligation to provide evidence for tax compliance;
+                variation of fees; variation of commission rates. Payments:
+                payment of fees; disputed payments; unjustified charge-backs;
+                unpaid fees: withdrawal of services; right of set off. Our role:
+                acknowledgement of website operator role; provision subject to
+                limitations of liability. Our rights to use your content:
+                definition of user content; licence of user content;
+                sub-licensing of user content; right to bring proceedings in
+                respect of user content; waiver of moral rights in user content;
+                user may edit own content; delete etc user content on breach.
+                Rules about your content: user content warranty; no unlawful
+                user content; user content rules; civility and user content;
+                hyperlinking and user content; previous complaints and user
+                content. Report abuse: request to report abuse; how to report
+                abuse. Limited warranties: no warranties for information; right
+                to discontinue website publication; no implied warranties or
+                representations relating to website. Limitations and exclusions
+                of liability: caveats to limits of liability (with consumer
+                protection); interpretation of limits of liability; no liablity
+                for free information or services; no liability for force
+                majeure; no liability for business losses; no liability for loss
+                of data or software (with consumer protection); no liability for
+                consequential loss (with consumer protection); no personal
+                liability; liability cap upon services contract. Indemnity:
+                indemnity from marketplace website users. Breaches of these
+                terms and conditions: consequences of breach; non circumvention
+                of measures upon breach. Third party websites: third party
+                websites: hyperlinks not recommendations; third party websites:
+                no control or liability. Trade marks: trade mark ownership;
+                third party trade marks on website. Variation: document may be
+                revised; variation of website document: unregistered users;
+                variation of website document: registered users. Assignment:
+                assignment by first party (with consumer rights); assignment by
+                second party. Severability: severability of whole; severability
+                of parts. Third party rights: third party rights: benefit; third
+                party rights: exercise of rights. Entire agreement: entire
+                agreement - use of website. Law and jurisdiction: governing law;
+                jurisdiction. Statutory and regulatory disclosures: ecommerce
+                regulations order process information; copy of document not
+                filed; language of document; ecommerce regulations: trade
+                register; ecommerce regulations: authorisation scheme; ecommerce
+                regulations: professionals; ecommerce regulations: code of
+                conduct; value added tax number; link to ODR website; name and
+                URL of ADR provider. Our details: website operator name; company
+                registration details; place of business; contact information.
+              </p>
+            </div>
             <fieldset>
               <input type="checkbox" name="accept" id="accept" required />
 
               <label for="accept"
                 >I accept the
-                <a href="#termsAndConditions" id="terms">Terms and Conditions </a></label
+                <a href="#termsAndConditions" id="terms"
+                  >Terms and Conditions
+                </a></label
               >
             </fieldset>
-          </form>
-        </div>
-        <div class="tooltip" id="orderTooltip">
-          Please fill in all fields correctly and accept to the Terms and Conditions
-        </div>
-        <button class="order-btn">Place order</button>
+          </div>
+          <div class="tooltip" id="orderTooltip">
+            Please fill in all fields correctly and accept to the Terms and
+            Conditions
+          </div>
+          <button class="order-btn">Place order</button>
+        </form>
       </section>
     </main>
     <script src="script.js"></script>

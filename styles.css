@@ -137,13 +137,13 @@ header {
   height: 120px;
 }
 
-.logo-container{
+.logo-container {
   padding-top: 10px;
 }
 .logo-container img {
   display: block;
   margin: 0 auto;
- }
+}
 
 h1 {
   font-size: 28px;
@@ -212,66 +212,79 @@ input {
   border: 1px solid #acbdcd;
 }
 
-.creditcard label {
-  padding-top: 18px;
+.creditcard-block label:nth-of-type(2) {
+  margin-top: 25px;
+}
+.creditcard-block label:nth-of-type(3) {
+  margin-top: 20px;
+}
+
+.creditcard-block label {
   font-family: "Open Sans", sans-serif;
   display: block;
   padding-bottom: 9px;
 }
-.creditcard input {
+.creditcard-block label::after {
+  content: " *";
+  color: red;
+}
+
+.creditcard-block input {
   display: block;
   font-size: 14px;
   padding: 10px;
 }
-.creditcard form fieldset input:nth-of-type(1),
-.creditcard form fieldset input:nth-of-type(4) {
-  width: 86%;
+.creditcard-block input:nth-of-type(1),
+.creditcard-block input:nth-of-type(4) {
+  width: 100%;
+  box-sizing: border-box;
 }
-.creditcard form fieldset input:nth-of-type(1) {
+.creditcard-block fieldset input:nth-of-type(1) {
   background: url("src/card.png") 99% 50%;
   background-repeat: no-repeat;
 }
-.creditcard form fieldset input:nth-of-type(2),
-.creditcard form fieldset input:nth-of-type(3) {
+.creditcard-block input:nth-of-type(2),
+.creditcard-block input:nth-of-type(3) {
   display: inline-block;
   width: 10%;
   padding: 7px;
 }
 
-.creditcard {
+.creditcard-block {
   padding-top: 14px;
   display: none;
 }
-.creditcard fieldset:first-child {
-  width: 53%;
-  padding-top: 10px;
-  padding-left: 21px;
-  padding-bottom: 25px;
+.creditcard-block fieldset:first-child {
+  width: 310px;
+  padding: 25px;
   display: inline-block;
 }
 
 .cvv {
   display: inline-block;
-  margin-left: 5px;
-  margin-top: 5px;
+  margin-left: 15px;
+  margin-top: 30px;
   vertical-align: top;
+  width: 100px;
 }
 
 .cvv input {
-  margin-top: 10px;
-  width: 40%;
   font-size: 14px;
   padding: 8px;
+  width: 100%;
+  box-sizing: border-box;
 }
 .help-img {
   position: relative;
+  float: right;
   top: -27px;
-  left: 70px;
+  right: 5px;
   height: 20px;
   width: 20px;
-  background: url("src/help.png") 95% 50%;
+  background: url("src/help.png") 50% 50%;
   background-repeat: no-repeat;
   background-size: 20px 20px;
+
 }
 
 .accept-block label {
@@ -297,10 +310,6 @@ label a {
   display: inline-block;
 }
 
-.required {
-  color: red;
-}
-
 button.order-btn {
   margin-top: 20px;
   margin-bottom: 60px;
@@ -317,77 +326,77 @@ button.order-btn {
   font-weight: 400;
 }
 
-.giftcard {
+.giftcard-block {
   /* display: none; */
   text-align: center;
   padding-top: 14px;
   display: none;
 }
 
-.giftcard label {
+.giftcard-block label {
   padding-top: 18px;
   font-family: "Open Sans", sans-serif;
   display: block;
   padding-bottom: 9px;
 }
-.giftcard label:nth-of-type(2) {
+.giftcard-block label:nth-of-type(2) {
   text-align: left;
 }
-.giftcard input {
+.giftcard-block input {
   display: block;
   font-size: 14px;
   padding: 10px;
 }
-.giftcard fieldset {
+.giftcard-block fieldset {
   width: 53%;
   padding-top: 10px;
   padding-left: 21px;
   padding-bottom: 25px;
   display: inline-block;
 }
-.giftcard form fieldset input:nth-of-type(1) {
+.giftcard-block form fieldset input:nth-of-type(1) {
   width: 86%;
 }
-.giftcard form fieldset input:nth-of-type(2) {
+.giftcard-block form fieldset input:nth-of-type(2) {
   width: 20%;
 }
-.paypal {
+.paypal-block {
   /* display: none; */
   padding-top: 14px;
   text-align: center;
   display: none;
 }
 
-.paypal {
+.paypal-block {
   /* display: none; */
   padding-top: 14px;
 }
 
-.paypal label {
+.paypal-block label {
   padding-top: 18px;
   font-family: "Open Sans", sans-serif;
   display: block;
   padding-bottom: 9px;
 }
-.paypal input {
+.paypal-block input {
   display: block;
   font-size: 14px;
   padding: 10px;
 }
-.paypal fieldset {
+.paypal-block fieldset {
   width: 53%;
   padding-top: 10px;
   padding-left: 21px;
   padding-bottom: 25px;
   display: inline-block;
 }
-.paypal form fieldset input:nth-of-type(1) {
+.paypal-block form fieldset input:nth-of-type(1) {
   width: 86%;
 }
-.paypal form fieldset input:nth-of-type(2) {
+.paypal-block form fieldset input:nth-of-type(2) {
   width: 20%;
 }
-.paypal legend {
+.paypal-block legend {
   font-size: 14px;
   font-weight: 400;
 }
@@ -465,4 +474,8 @@ button.login {
 }
 a:hover .termsAndConditions {
   display: block;
+}
+#terms {
+  font-size: 14px;
+  color: #465f73;
 }
