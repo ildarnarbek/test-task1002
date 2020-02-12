@@ -136,6 +136,15 @@ section {
 header {
   height: 120px;
 }
+
+.logo-container{
+  padding-top: 10px;
+}
+.logo-container img {
+  display: block;
+  margin: 0 auto;
+ }
+
 h1 {
   font-size: 28px;
   font-weight: 700;
@@ -145,6 +154,11 @@ h2 {
   font-size: 22px;
   font-weight: 500;
   padding-bottom: 25px;
+}
+h3 {
+  font-size: 18px;
+  font-weight: 500;
+  padding-bottom: 20px;
 }
 a {
   font-size: 16px;
@@ -179,7 +193,7 @@ button.payment-type {
 button.payment-type:not(:last-child) {
   margin-right: 11px;
 }
-button.payment-type.select {
+button.select {
   background-color: #4169e1;
   color: white;
   border: 1px solid #4169e1;
@@ -214,7 +228,7 @@ input {
   width: 86%;
 }
 .creditcard form fieldset input:nth-of-type(1) {
-  background: url("src/card.png") 100% 50%;
+  background: url("src/card.png") 99% 50%;
   background-repeat: no-repeat;
 }
 .creditcard form fieldset input:nth-of-type(2),
@@ -226,6 +240,7 @@ input {
 
 .creditcard {
   padding-top: 14px;
+  display: none;
 }
 .creditcard fieldset:first-child {
   width: 53%;
@@ -257,15 +272,6 @@ input {
   background: url("src/help.png") 95% 50%;
   background-repeat: no-repeat;
   background-size: 20px 20px;
-}
-
-input[type="number"] {
-  -moz-appearance: textfield;
-}
-
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
 }
 
 .accept-block label {
@@ -315,6 +321,7 @@ button.order-btn {
   /* display: none; */
   text-align: center;
   padding-top: 14px;
+  display: none;
 }
 
 .giftcard label {
@@ -348,6 +355,7 @@ button.order-btn {
   /* display: none; */
   padding-top: 14px;
   text-align: center;
+  display: none;
 }
 
 .paypal {
@@ -380,21 +388,81 @@ button.order-btn {
   width: 20%;
 }
 .paypal legend {
-    font-size: 14px;
-    font-weight: 400;
+  font-size: 14px;
+  font-weight: 400;
 }
 button.login {
-    margin-top: 10px;
-    padding: 0;
-    border: none;
-    font: inherit;
-    color: inherit;
-    width: 150px;
-    height: 32px;
-    background-color: #4169e1;
-    color: white;
-    border: 1px solid #4169e1;
-    border-radius: 5px;
-    font-size: 18px;
-    font-weight: 400;
+  margin-top: 10px;
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  width: 150px;
+  height: 32px;
+  background-color: #4169e1;
+  color: white;
+  border: 1px solid #4169e1;
+  border-radius: 5px;
+  font-size: 18px;
+  font-weight: 400;
+}
+.show {
+  display: block;
+}
+
+#cardnumberTooltip,
+#validThruTooltip,
+#orderTooltip,
+#cvvCvcTooltip {
+  display: none;
+  font-size: 12px;
+  color: red;
+  padding: 5px;
+  font-style: italic;
+}
+
+.help-info {
+  background-color: white;
+  width: 300px;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  position: relative;
+  top: 35px;
+  left: -70px;
+}
+.help-info img {
+  float: left;
+}
+.help-img:hover .help-info {
+  display: block;
+}
+
+.termsAndConditions {
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  font-weight: 400;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  display: none;
+  position: absolute;
+  bottom: -135px;
+  left: 50%;
+  margin-left: -250px;
+  /* margin-bottom: -200px; */
+  /* margin-top: -250px; */
+  overflow: auto;
+  /* margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0; */
+  color: black;
+}
+a:hover .termsAndConditions {
+  display: block;
 }
