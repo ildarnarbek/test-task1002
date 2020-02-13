@@ -24,66 +24,74 @@
     <main>
       <section>
         <h1>Checkout</h1>
-        <article>
-          <h2>Products</h2>
-          <table>
-            <tr>
-              <td>
-                <a href="#"
-                  >Apple - iPad with Retina display Wi-Fi - 32 Gb - White</a
+        <article class="products-block">
+          <div class="title">Products</div>
+          <table class="table-block">
+            <tr class="table-block__row">
+              <td class="table-block__item">
+                <a href="#" class="table-block__item--link">
+                  Apple&reg - iPad&reg with Retina&reg display Wi-Fi - 32 Gb - White</a
                 >
               </td>
-              <td class="price-item-1">499.00</td>
+              <td class="table-block__item table-block__item-price">499.00</td>
             </tr>
-            <tr>
-              <td><a href="#">16GB A Series Walkman Video MP3</a></td>
-              <td class="price-item-2">130.00</td>
+            <tr class="table-block__row">
+              <td class="table-block__item">
+                <a href="#" class="table-block__item--link">
+                  16GB A Series Walkman Video MP3</a
+                >
+              </td>
+              <td class="table-block__item table-block__item-price">130.00</td>
             </tr>
           </table>
         </article>
-        <article>
-          <h2>Shipping method</h2>
-          <table>
-            <tr>
-              <td>FedEx</td>
-              <td class="price-shipping-1">13.99</td>
+        <article class="shipping-block">
+          <div class="title">Shipping method</div>
+          <table class="table-block">
+            <tr class="table-block__row">
+              <td class="table-block__item">FedEx</td>
+              <td class="table-block__item table-block__item-price">13.99</td>
             </tr>
           </table>
         </article>
         <div class="payment-method">
-          <h2>Payment method</h2>
-          <div class="tab-container">
-            <button class="payment-type credit-card-tab select">
+          <div class="title">Payment method</div>
+          <div class="payment-method__tab-container">
+            <button
+              class="payment-method__tab credit-card-tab payment-method__tab--select"
+            >
               Credit card
             </button>
-            <button class="payment-type gift-card-tab">Gift card</button>
-            <button class="payment-type pay-pal-tab">PayPal</button>
+            <button class="payment-method__tab gift-card-tab">Gift card</button>
+            <button class="payment-method__tab pay-pal-tab">PayPal</button>
           </div>
         </div>
 
-        <form action="" class="main-form">
-          <div class="type creditcard-block show">
-            <fieldset>
-              <label for="card-number">Card number</label>
+        <form action="submit" class="main-form">
+          <div class="main-form__type creditcard-block main-form__type--show">
+            <fieldset class="form__fieldset form__fieldset--payments">
+              <label for="card-number" class="form__label">Card number</label>
               <input
                 type="text"
                 name="card-number"
                 id="card-number"
-                required
                 pattern="[0-9]{4}\s[0-9]{4}\s[0-9]{4}\s[0-9]{4}"
                 maxlength="19"
+                class="main-form__input main-form__input--wide main-form__input--image"
               />
-              <div class="tooltip" id="cardnumberTooltip">
+              <div class="main-form__tooltip" id="cardnumberTooltip">
                 Please use only numbers
               </div>
 
-              <label for="valid-thru">Valid thru (mm/yy)</label>
+              <label for="valid-thru" class="form__label"
+                >Valid thru (mm/yy)</label
+              >
               <input
                 type="text"
                 name="valid-thru-mm"
                 id="valid-thru-mm"
                 maxlength="2"
-                required
+                class="main-form__input main-form__input--small"
               />
 
               &nbsp;/&nbsp;
@@ -92,33 +100,41 @@
                 name="valid-thru-yy"
                 id="valid-thru-yy"
                 maxlength="2"
-                required
+                class="main-form__input main-form__input--small"
               />
-              <div class="tooltip" id="validThruTooltip">
+              <div class="main-form__tooltip" id="validThruTooltip">
                 Please use only numbers
               </div>
 
-              <label for="cardholders-name">Cardholder's name</label>
+              <label for="cardholders-name" class="form__label"
+                >Cardholder's name</label
+              >
               <input
                 type="text"
                 name="cardholders-name"
                 id="cardholders-name"
-                required
+                class="main-form__input main-form__input--wide"
               />
             </fieldset>
-            <div class="cvv">
-              <label for="cvv-cvc"> CVV/CVC</label>
+            <div class="cvv-block">
+              <label for="cvv-cvc" class="form__label"> CVV/CVC</label>
               <input
                 type="text"
                 name="cvv-cvc"
                 id="cvv-cvc"
                 maxlength="3"
-                required
+                class="main-form__input main-form__input--wide main-form__input--cvv"
               />
 
-              <div class="help-img">
+              <div class="help-block">
                 <div class="help-info">
-                  <img src="src/cvv.png" alt="" height="80px" width="80px" />
+                  <img
+                    src="src/cvv.png"
+                    alt=""
+                    height="80px"
+                    width="80px"
+                    class="help-info__image"
+                  />
                   <p>
                     Turn your card over and look at the signature box. You
                     should see either the entire 16-digit credit card number or
@@ -128,53 +144,61 @@
                   </p>
                 </div>
               </div>
-              <div class="cvvCvcTooltip" id="cvvCvcTooltip">
+              <div class="main-form__tooltip" id="cvvCvcTooltip">
                 Please use only numbers
               </div>
             </div>
           </div>
 
-          <div class="type giftcard-block ">
-            <fieldset>
-              <label for="gift-card-number"> Gift card number</label>
+          <div class="main-form__type giftcard-block ">
+            <fieldset class="form__fieldset form__fieldset--payments">
+              <label for="gift-card-number" class="form__label">
+                Gift card number</label
+              >
               <input
                 type="text"
                 name="gift-card-number"
                 id="gift-card-number"
+                class="main-form__input main-form__input--wide"
               />
-              <label for="gift-card-pin"> Gift card pin</label>
+              <label for="gift-card-pin" class="form__label">
+                Gift card pin</label
+              >
               <input
                 type="password"
                 name="gift-card-pin"
                 id="gift-card-pin"
-                required
+                class="main-form__input main-form__input--pin"
               />
             </fieldset>
           </div>
-          <div class="type paypal-block ">
-            <legend>Paypal authentification</legend>
-            <fieldset>
-              <label for="paypal-login"> Login</label>
+          <div class="main-form__type paypal-block ">
+            <fieldset class="form__fieldset form__fieldset--payments">
+              <label for="paypal-login" class="form__label"> Login</label>
               <input
                 type="text"
                 name="paypal-login"
                 id="paypal-login"
-                required
+                class="main-form__input main-form__input--wide"
               />
 
-              <label for="paypal-password"> Password</label>
+              <label for="paypal-password" class="form__label"> Password</label>
               <input
                 type="password"
                 name="paypal-password"
                 id="paypal-password"
-                required
+                class="main-form__input main-form__input--wide"
               />
               <button class="login">Login</button>
             </fieldset>
           </div>
           <div class="accept-block">
-            <div class="termsAndConditions" name="termsAndConditions">
-              <h3>Terms and Conditions</h3>
+            <div class="terms-and-conditions-block">
+              <div class="terms-and-conditions-block__cross"></div>
+              <div class="terms-and-conditions-block__title" name="termsAndConditions">
+                Terms and Conditions 
+              </div>
+              
               <p>
                 Introduction: document governs website use; consent to website
                 document: implied; consent to website terms and conditions:
@@ -273,22 +297,27 @@
                 registration details; place of business; contact information.
               </p>
             </div>
-            <fieldset>
-              <input type="checkbox" name="accept" id="accept" required />
+            <fieldset class="form__fieldset form__fieldset--accept">
+              <input
+                type="checkbox"
+                name="accept"
+                id="accept"
+                class="accept-block__input"
+              />
 
-              <label for="accept"
-                >I accept the
-                <a href="#termsAndConditions" id="terms"
+              <label for="accept" class="accept-block__label">
+                I accept the
+                <a href="#termsAndConditions" id="terms" class="accept-block__label--link"
                   >Terms and Conditions
                 </a></label
               >
             </fieldset>
           </div>
-          <div class="tooltip" id="orderTooltip">
+          <div class="main-form__tooltip" id="orderTooltip">
             Please fill in all fields correctly and accept to the Terms and
             Conditions
           </div>
-          <button class="order-btn">Place order</button>
+          <button class="accept-block__order-btn">Place order</button>
         </form>
       </section>
     </main>

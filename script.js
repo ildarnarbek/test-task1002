@@ -6,13 +6,13 @@ let creditCardTab = document.querySelector(".credit-card-tab"),
   paypalBlock = document.querySelector(".paypal-block");
 
 function switchTab(selectedTab, showForm) {
-  let tabs = document.querySelectorAll(".payment-type");
-  let types = document.querySelectorAll(".type");
+  let tabs = document.querySelectorAll(".payment-method__tab");
+  let types = document.querySelectorAll(".main-form__type");
   for (let i = 0; i < 3; i++) {
-    tabs[i].classList.remove("select");
-    selectedTab.classList.add("select");
-    types[i].classList.remove("show");
-    showForm.classList.add("show");
+    tabs[i].classList.remove("payment-method__tab--select");
+    selectedTab.classList.add("payment-method__tab--select");
+    types[i].classList.remove("main-form__type--show");
+    showForm.classList.add("main-form__type--show");
   }
 }
 
@@ -34,7 +34,7 @@ for(i=0; i<prices.length ; i++ ){
 }
 totalSumToButton = "( $" + totalSum + " )";
 document
-  .querySelector(".order-btn")
+  .querySelector(".accept-block__order-btn")
   .insertAdjacentHTML("beforeEnd", totalSumToButton);
 
 
@@ -44,7 +44,7 @@ let cardNumber = document.querySelector("#card-number"),
   validThruYy = document.querySelector("#valid-thru-yy"),
   cardholdersName = document.querySelector("#cardholders-name"),
   ccvvCvc = document.querySelector("#cvv-cvc"),
-  orderBtn = document.querySelector(".order-btn");
+  orderBtn = document.querySelector(".accept-block__order-btn");
 
 // Отмена ввода не цифр+разделитель
 cardnumberTooltip = document.querySelector("#cardnumberTooltip");
@@ -109,11 +109,22 @@ ccvvCvc.addEventListener("keypress", e => {
 });
 
 let terms = document.querySelector("#terms");
-let termsAndConditions = document.querySelector(".termsAndConditions");
+let termsAndConditions = document.querySelector(".terms-and-conditions-block");
+let cross = document.querySelector(".terms-and-conditions-block__cross");
 
+// terms.onclick = function() {
+//   termsAndConditions.style.display =
+//     termsAndConditions.style.display == "block" ? "none" : "block";
+// };
 terms.onclick = function() {
-  termsAndConditions.style.display =
-    termsAndConditions.style.display == "block" ? "none" : "block";
+    termsAndConditions.style.display ="block";
+    document.body.style.overflow = "hidden";
+  };
+
+
+cross.onclick = function(){
+    termsAndConditions.style.display ="none";
+    document.body.style.overflow = "visible";
 };
 
 accept = document.querySelector("#accept");
@@ -131,5 +142,7 @@ orderBtn.addEventListener("click", e => {
     showlement(orderTooltip);
   } else {
     hideElement(orderTooltip);
+    alert('Your order is accepted')
   }
 });
+
