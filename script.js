@@ -5,48 +5,39 @@ let creditCardTab = document.querySelector(".credit-card-tab"),
   giftcardBlock = document.querySelector(".giftcard-block"),
   paypalBlock = document.querySelector(".paypal-block");
 
-creditCardTab.onclick = function() {
-  console.log("клик на кредит кард");
-  creditCardTab.classList.add("select");
-  giftCardTab.classList.remove("select");
-  payPalTab.classList.remove("select");
-  creditcardBlock.classList.add("show");
-  giftcardBlock.classList.remove("show");
-  paypalBlock.classList.remove("show");
-};
-giftCardTab.onclick = function() {
-  console.log("клик на гифт кард");
-  giftCardTab.classList.add("select");
-  payPalTab.classList.remove("select");
-  creditCardTab.classList.remove("select");
-  giftcardBlock.classList.add("show");
-  creditcardBlock.classList.remove("show");
-  paypalBlock.classList.remove("show");
-};
-payPalTab.onclick = function() {
-  console.log("клик на пейпал");
-  payPalTab.classList.add("select");
-  giftCardTab.classList.remove("select");
-  creditCardTab.classList.remove("select");
-  paypalBlock.classList.add("show");
-  creditcardBlock.classList.remove("show");
-  giftcardBlock.classList.remove("show");
-  console.log();
-};
+function switchTab(selectedTab, showForm) {
+  let tabs = document.querySelectorAll(".payment-type");
+  let types = document.querySelectorAll(".type");
+  for (let i = 0; i < 3; i++) {
+    tabs[i].classList.remove("select");
+    selectedTab.classList.add("select");
+    types[i].classList.remove("show");
+    showForm.classList.add("show");
+  }
+}
+
+creditCardTab.addEventListener("click", function() {
+  return switchTab(creditCardTab, creditcardBlock);
+});
+giftCardTab.addEventListener("click", function() {
+  return switchTab(giftCardTab, giftcardBlock);
+});
+payPalTab.addEventListener("click", function() {
+  return switchTab(payPalTab, paypalBlock);
+});
 
 // Значение в Place order
-
-let price1 = document.querySelector(".price-item-1").innerHTML;
-let price2 = document.querySelector(".price-item-2").innerHTML;
-let priceShip1 = document.querySelector(".price-shipping-1").innerHTML;
-price1 = parseInt(price1.replace(/\D+/g, "")) / 100;
-price2 = parseInt(price2.replace(/\D+/g, "")) / 100;
-priceShip1 = parseInt(priceShip1.replace(/\D+/g, "")) / 100;
-totalSum = price1 + price2 + priceShip1;
-totalSumToButton = "($" + totalSum + " )";
+let prices = document.querySelectorAll('tr>td:last-child'),
+    totalSum=0;
+for(i=0; i<prices.length ; i++ ){
+    totalSum+= parseFloat(prices[i].innerHTML);
+}
+totalSumToButton = "( $" + totalSum + " )";
 document
   .querySelector(".order-btn")
   .insertAdjacentHTML("beforeEnd", totalSumToButton);
+
+
 
 let cardNumber = document.querySelector("#card-number"),
   validThruMm = document.querySelector("#valid-thru-mm"),
@@ -63,6 +54,16 @@ orderTooltip = document.querySelector("#orderTooltip");
 
 let delimiterСounter = 0;
 
+
+function hideElement(element) {
+    element.style.display = "none";
+}
+
+function showlement(element) {
+    element.style.display = "block";
+}
+
+
 cardNumber.addEventListener("keypress", e => {
   if (cardNumber.value == "") {
     delimiterСounter = 0;
@@ -76,34 +77,34 @@ cardNumber.addEventListener("keypress", e => {
   if (!/\d/.test(e.key)) {
     e.preventDefault();
     delimiterСounter--;
-    cardnumberTooltip.style.display = "block";
+    showlement(cardnumberTooltip);
   } else {
-    cardnumberTooltip.style.display = "none";
+    hideElement(cardnumberTooltip);
   }
 });
 
 validThruMm.addEventListener("keypress", e => {
   if (!/\d/.test(e.key)) {
     e.preventDefault();
-    validThruTooltip.style.display = "block";
+    showlement(validThruTooltip);
   } else {
-    validThruTooltip.style.display = "none";
+    hideElement(validThruTooltip);
   }
 });
 validThruYy.addEventListener("keypress", e => {
   if (!/\d/.test(e.key)) {
     e.preventDefault();
-    validThruTooltip.style.display = "block";
+    showlement(validThruTooltip);
   } else {
-    validThruTooltip.style.display = "none";
+    hideElement(validThruTooltip);
   }
 });
 ccvvCvc.addEventListener("keypress", e => {
   if (!/\d/.test(e.key)) {
     e.preventDefault();
-    cvvCvcTooltip.style.display = "block";
+    showlement(cvvCvcTooltip);
   } else {
-    cvvCvcTooltip.style.display = "none";
+    hideElement(cvvCvcTooltip);
   }
 });
 
@@ -111,7 +112,6 @@ let terms = document.querySelector("#terms");
 let termsAndConditions = document.querySelector(".termsAndConditions");
 
 terms.onclick = function() {
-  // termsAndConditions.style.display= 'block';
   termsAndConditions.style.display =
     termsAndConditions.style.display == "block" ? "none" : "block";
 };
@@ -128,8 +128,8 @@ orderBtn.addEventListener("click", e => {
     accept.checked == false
   ) {
     e.preventDefault();
-    orderTooltip.style.display = "block";
+    showlement(orderTooltip);
   } else {
-    orderTooltip.style.display = "none";
+    hideElement(orderTooltip);
   }
 });

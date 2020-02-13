@@ -33,11 +33,11 @@
                   >Apple - iPad with Retina display Wi-Fi - 32 Gb - White</a
                 >
               </td>
-              <td class="price-item-1">$499.00</td>
+              <td class="price-item-1">499.00</td>
             </tr>
             <tr>
               <td><a href="#">16GB A Series Walkman Video MP3</a></td>
-              <td class="price-item-2">$130.00</td>
+              <td class="price-item-2">130.00</td>
             </tr>
           </table>
         </article>
@@ -46,19 +46,23 @@
           <table>
             <tr>
               <td>FedEx</td>
-              <td class="price-shipping-1">$13.99</td>
+              <td class="price-shipping-1">13.99</td>
             </tr>
           </table>
         </article>
-        <div>
+        <div class="payment-method">
           <h2>Payment method</h2>
-          <button class="payment-type credit-card-tab select">Credit card</button>
-          <button class="payment-type gift-card-tab">Gift card</button>
-          <button class="payment-type pay-pal-tab">PayPal</button>
+          <div class="tab-container">
+            <button class="payment-type credit-card-tab select">
+              Credit card
+            </button>
+            <button class="payment-type gift-card-tab">Gift card</button>
+            <button class="payment-type pay-pal-tab">PayPal</button>
+          </div>
         </div>
 
-        <form action="">
-          <div class="creditcard-block show">
+        <form action="" class="main-form">
+          <div class="type creditcard-block show">
             <fieldset>
               <label for="card-number">Card number</label>
               <input
@@ -111,9 +115,7 @@
                 maxlength="3"
                 required
               />
-              <div class="cvvCvcTooltip" id="cvvCvcTooltip">
-                Please use only numbers
-              </div>
+
               <div class="help-img">
                 <div class="help-info">
                   <img src="src/cvv.png" alt="" height="80px" width="80px" />
@@ -126,10 +128,13 @@
                   </p>
                 </div>
               </div>
+              <div class="cvvCvcTooltip" id="cvvCvcTooltip">
+                Please use only numbers
+              </div>
             </div>
           </div>
 
-          <div class="giftcard-block ">
+          <div class="type giftcard-block ">
             <fieldset>
               <label for="gift-card-number"> Gift card number</label>
               <input
@@ -146,26 +151,24 @@
               />
             </fieldset>
           </div>
-          <div class="paypal-block ">
+          <div class="type paypal-block ">
             <legend>Paypal authentification</legend>
             <fieldset>
-              <label for="paypal-login">
-                Login
-                <input
-                  type="text"
-                  name="paypal-login"
-                  id="paypal-login"
-                  required
-              /></label>
+              <label for="paypal-login"> Login</label>
+              <input
+                type="text"
+                name="paypal-login"
+                id="paypal-login"
+                required
+              />
 
-              <label for="paypal-password">
-                Password
-                <input
-                  type="password"
-                  name="paypal-password"
-                  id="paypal-password"
-                  required
-              /></label>
+              <label for="paypal-password"> Password</label>
+              <input
+                type="password"
+                name="paypal-password"
+                id="paypal-password"
+                required
+              />
               <button class="login">Login</button>
             </fieldset>
           </div>

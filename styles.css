@@ -130,6 +130,7 @@ body {
 section {
   width: 644px;
   margin: 0 auto;
+  padding-bottom: 60px;
   /* padding: 30px; */
 }
 
@@ -189,10 +190,14 @@ button.payment-type {
   border-radius: 5px;
   font-size: 18px;
   font-weight: 400;
+  margin: 0px;
 }
-button.payment-type:not(:last-child) {
-  margin-right: 11px;
+
+.tab-container {
+  display: flex;
+  justify-content: space-between;
 }
+
 button.select {
   background-color: #4169e1;
   color: white;
@@ -224,7 +229,7 @@ input {
   display: block;
   padding-bottom: 9px;
 }
-.creditcard-block label::after {
+.type label::after {
   content: " *";
   color: red;
 }
@@ -284,7 +289,6 @@ input {
   background: url("src/help.png") 50% 50%;
   background-repeat: no-repeat;
   background-size: 20px 20px;
-
 }
 
 .accept-block label {
@@ -312,7 +316,6 @@ label a {
 
 button.order-btn {
   margin-top: 20px;
-  margin-bottom: 60px;
   padding: 0;
   border: none;
   font: inherit;
@@ -327,14 +330,11 @@ button.order-btn {
 }
 
 .giftcard-block {
-  /* display: none; */
-  text-align: center;
   padding-top: 14px;
   display: none;
 }
 
 .giftcard-block label {
-  padding-top: 18px;
   font-family: "Open Sans", sans-serif;
   display: block;
   padding-bottom: 9px;
@@ -346,34 +346,31 @@ button.order-btn {
   display: block;
   font-size: 14px;
   padding: 10px;
+  margin-bottom: 10px;
 }
 .giftcard-block fieldset {
   width: 53%;
-  padding-top: 10px;
-  padding-left: 21px;
-  padding-bottom: 25px;
+  padding: 25px;
   display: inline-block;
 }
-.giftcard-block form fieldset input:nth-of-type(1) {
-  width: 86%;
+.giftcard-block input:nth-of-type(1) {
+  width: 100%;
+  box-sizing: border-box;
 }
-.giftcard-block form fieldset input:nth-of-type(2) {
+.giftcard-block fieldset input:nth-of-type(2) {
   width: 20%;
 }
 .paypal-block {
-  /* display: none; */
   padding-top: 14px;
   text-align: center;
   display: none;
 }
 
 .paypal-block {
-  /* display: none; */
-  padding-top: 14px;
+  padding: 25px;
 }
 
 .paypal-block label {
-  padding-top: 18px;
   font-family: "Open Sans", sans-serif;
   display: block;
   padding-bottom: 9px;
@@ -382,20 +379,19 @@ button.order-btn {
   display: block;
   font-size: 14px;
   padding: 10px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
 }
 .paypal-block fieldset {
   width: 53%;
-  padding-top: 10px;
-  padding-left: 21px;
-  padding-bottom: 25px;
+  padding: 25px;
   display: inline-block;
 }
-.paypal-block form fieldset input:nth-of-type(1) {
-  width: 86%;
+.paypal-block input {
+  width: 100%;
 }
-.paypal-block form fieldset input:nth-of-type(2) {
-  width: 20%;
-}
+
 .paypal-block legend {
   font-size: 14px;
   font-weight: 400;
@@ -478,4 +474,10 @@ a:hover .termsAndConditions {
 #terms {
   font-size: 14px;
   color: #465f73;
+}
+
+.price-item-1::before,
+.price-item-2::before,
+.price-shipping-1::before {
+  content: "$";
 }
