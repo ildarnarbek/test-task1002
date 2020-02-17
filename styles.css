@@ -348,8 +348,6 @@ h1 {
   font-size: 14px;
   font-weight: 600;
   display: inline-block;
-  vertical-align: top;
-  margin-top: 20px;
 }
 
 .accept-block__label--link {
@@ -360,13 +358,13 @@ h1 {
 }
 .form__fieldset--accept {
   margin-top: 30px;
-  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 18px;
+  padding-left: 18px;
 }
 .accept-block__input {
-  margin-left: 21px;
-  margin-top: 23px;
-  margin-bottom: 20px;
   display: inline-block;
+  vertical-align:middle;
 }
 
 .accept-block__order-btn {

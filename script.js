@@ -1,3 +1,4 @@
+(function(){
 let creditCardTab = document.querySelector(".credit-card-tab"),
   giftCardTab = document.querySelector(".gift-card-tab"),
   payPalTab = document.querySelector(".pay-pal-tab"),
@@ -117,3 +118,4 @@ orderBtn.addEventListener("click", e => {
     alert("Your order is accepted");
   }
 });
+})();
