@@ -89,15 +89,15 @@ let terms = document.querySelector("#terms"),
   cross = document.querySelector(".terms-and-conditions__cross"),
   accept = document.querySelector("#accept");
 
-terms.onclick = function() {
+terms.addEventListener("click", function() {
   termsAndConditions.style.display = "block";
   document.body.style.overflow = "hidden";
-};
+});
 
-cross.onclick = function() {
+cross.addEventListener("click", function(){
   termsAndConditions.style.display = "none";
   document.body.style.overflow = "visible";
-};
+});
 
 
 orderBtn.addEventListener("click", e => {
