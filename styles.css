@@ -217,8 +217,9 @@ h1 {
   padding-bottom: 9px;
 }
 .form__label::after {
-  content: " *";
+  content: "*";
   color: red;
+  margin-left: 5px;
 }
 
 .main-form__type {
@@ -243,13 +244,21 @@ h1 {
 .main-form__input--image {
   background: url("src/card.png") 99% 50%;
   background-repeat: no-repeat;
-  margin-bottom: 25px;
 }
+
+.form_label--top-margin-25 {
+  margin-top: 25px;
+}
+.form_label--top-margin-20 {
+  margin-top: 20px;
+}
+
+
 .main-form__input--small {
   display: inline-block;
   width: 10%;
   padding: 7px;
-  margin-bottom: 20px;
+  
 }
 
 .main-form__input--cvv {
@@ -273,7 +282,6 @@ h1 {
   padding: 5px;
   font-style: italic;
 }
-
 
 .login {
   margin-top: 10px;
@@ -319,7 +327,7 @@ h1 {
 
 .help-info {
   background-color: white;
-  width: 300px;
+  width: 250px;
   font-weight: 400;
   border-radius: 5px;
   font-size: 12px;
@@ -328,7 +336,7 @@ h1 {
   display: none;
   position: relative;
   top: 35px;
-  left: -70px;
+  left: -75px;
 }
 
 .help-info__image {
@@ -376,7 +384,7 @@ h1 {
   font-weight: 400;
 }
 
-.terms-and-conditions-block {
+.terms-and-conditions{
   background-color: white;
   width: 500px;
   height: 400px;
@@ -390,17 +398,15 @@ h1 {
   bottom: -155px;
   left: 50%;
   margin-left: -250px;
-  /* margin-bottom: -200px; */
-  /* margin-top: -250px; */
   overflow: auto;
   color: black;
 }
-.terms-and-conditions-block__title {
+.terms-and-conditions__title {
   font-size: 18px;
   font-weight: 500;
   padding-bottom: 20px;
 }
-.terms-and-conditions-block__cross{
+.terms-and-conditions__cross{
   width: 20px;
   height: 20px;
   float: right;

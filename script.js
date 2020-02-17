@@ -8,29 +8,31 @@ let creditCardTab = document.querySelector(".credit-card-tab"),
 function switchTab(selectedTab, showForm) {
   let tabs = document.querySelectorAll(".payment-method__tab");
   let types = document.querySelectorAll(".main-form__type");
-  for (let i = 0; i < 3; i++) {
-    tabs[i].classList.remove("payment-method__tab--select");
-    selectedTab.classList.add("payment-method__tab--select");
-    types[i].classList.remove("main-form__type--show");
-    showForm.classList.add("main-form__type--show");
-  }
+  tabs.forEach(function(item) {
+    item.classList.remove("payment-method__tab--select");
+  });
+  types.forEach(function(item) {
+    item.classList.remove("main-form__type--show");
+  });
+  selectedTab.classList.add("payment-method__tab--select");
+  showForm.classList.add("main-form__type--show");
 }
 
 creditCardTab.addEventListener("click", function() {
-  return switchTab(creditCardTab, creditcardBlock);
+  switchTab(creditCardTab, creditcardBlock);
 });
 giftCardTab.addEventListener("click", function() {
-  return switchTab(giftCardTab, giftcardBlock);
+  switchTab(giftCardTab, giftcardBlock);
 });
 payPalTab.addEventListener("click", function() {
-  return switchTab(payPalTab, paypalBlock);
+  switchTab(payPalTab, paypalBlock);
 });
 
-// Значение в Place order
-let prices = document.querySelectorAll('tr>td:last-child'),
-    totalSum=0;
-for(i=0; i<prices.length ; i++ ){
-    totalSum+= parseFloat(prices[i].innerHTML);
+
+let prices = document.querySelectorAll("tr>td:last-child"),
+  totalSum = 0;
+for (i = 0; i < prices.length; i++) {
+  totalSum += parseFloat(prices[i].innerHTML);
 }
 totalSumToButton = "( $" + totalSum + " )";
 document
@@ -38,111 +40,80 @@ document
   .insertAdjacentHTML("beforeEnd", totalSumToButton);
 
 
-
 let cardNumber = document.querySelector("#card-number"),
   validThruMm = document.querySelector("#valid-thru-mm"),
   validThruYy = document.querySelector("#valid-thru-yy"),
   cardholdersName = document.querySelector("#cardholders-name"),
   ccvvCvc = document.querySelector("#cvv-cvc"),
-  orderBtn = document.querySelector(".accept-block__order-btn");
-
-// Отмена ввода не цифр+разделитель
-cardnumberTooltip = document.querySelector("#cardnumberTooltip");
-validThruTooltip = document.querySelector("#validThruTooltip");
-cvvCvcTooltip = document.querySelector("#cvvCvcTooltip");
-orderTooltip = document.querySelector("#orderTooltip");
-
-let delimiterСounter = 0;
+  orderBtn = document.querySelector(".accept-block__order-btn"),
+  cardnumberTooltip = document.querySelector("#cardnumberTooltip"),
+  validThruTooltip = document.querySelector("#validThruTooltip"),
+  cvvCvcTooltip = document.querySelector("#cvvCvcTooltip"),
+  orderTooltip = document.querySelector("#orderTooltip");
 
 
-function hideElement(element) {
-    element.style.display = "none";
+function checkValue(e, tooltip, field, maxlenght) {
+  if (field.value.length < maxlenght) {
+    if (!/\d/.test(e.key)) {
+      e.preventDefault();
+      tooltip.style.display = "block";
+    } else {
+      tooltip.style.display = "none";
+    }
+  }
 }
-
-function showlement(element) {
-    element.style.display = "block";
-}
-
 
 cardNumber.addEventListener("keypress", e => {
-  if (cardNumber.value == "") {
-    delimiterСounter = 0;
-  }
-  if (delimiterСounter == 4 && cardNumber.value.length < 19) {
-    delimiterСounter = 0;
+  if (
+    (cardNumber.value.length + 1) % 5 === 0 &&
+    cardNumber.value.length + 1 < 19
+  ) {
     cardNumber.value += " ";
   }
-  delimiterСounter++;
-
-  if (!/\d/.test(e.key)) {
-    e.preventDefault();
-    delimiterСounter--;
-    showlement(cardnumberTooltip);
-  } else {
-    hideElement(cardnumberTooltip);
-  }
+  checkValue(e, cardnumberTooltip, cardNumber, 19);
 });
 
 validThruMm.addEventListener("keypress", e => {
-  if (!/\d/.test(e.key)) {
-    e.preventDefault();
-    showlement(validThruTooltip);
-  } else {
-    hideElement(validThruTooltip);
-  }
+  checkValue(e, validThruTooltip, validThruMm, 2);
 });
 validThruYy.addEventListener("keypress", e => {
-  if (!/\d/.test(e.key)) {
-    e.preventDefault();
-    showlement(validThruTooltip);
-  } else {
-    hideElement(validThruTooltip);
-  }
+  checkValue(e, validThruTooltip, validThruYy, 2);
 });
+
 ccvvCvc.addEventListener("keypress", e => {
-  if (!/\d/.test(e.key)) {
-    e.preventDefault();
-    showlement(cvvCvcTooltip);
-  } else {
-    hideElement(cvvCvcTooltip);
-  }
+  checkValue(e, cvvCvcTooltip, ccvvCvc, 3);
 });
 
-let terms = document.querySelector("#terms");
-let termsAndConditions = document.querySelector(".terms-and-conditions-block");
-let cross = document.querySelector(".terms-and-conditions-block__cross");
+let terms = document.querySelector("#terms"),
+  termsAndConditions = document.querySelector(".terms-and-conditions"),
+  cross = document.querySelector(".terms-and-conditions__cross"),
+  accept = document.querySelector("#accept");
 
-// terms.onclick = function() {
-//   termsAndConditions.style.display =
-//     termsAndConditions.style.display == "block" ? "none" : "block";
-// };
 terms.onclick = function() {
-    termsAndConditions.style.display ="block";
-    document.body.style.overflow = "hidden";
-  };
-
-
-cross.onclick = function(){
-    termsAndConditions.style.display ="none";
-    document.body.style.overflow = "visible";
+  termsAndConditions.style.display = "block";
+  document.body.style.overflow = "hidden";
 };
 
-accept = document.querySelector("#accept");
+cross.onclick = function() {
+  termsAndConditions.style.display = "none";
+  document.body.style.overflow = "visible";
+};
 
-// Проверка полей
+
 orderBtn.addEventListener("click", e => {
   if (
     cardNumber.value.length < 19 ||
     validThruMm.value.length < 2 ||
     validThruYy.value.length < 2 ||
     ccvvCvc.value.length < 3 ||
+    cardholdersName.value.length < 5 ||
     accept.checked == false
   ) {
     e.preventDefault();
-    showlement(orderTooltip);
+    orderTooltip.style.display = "block";
   } else {
-    hideElement(orderTooltip);
-    alert('Your order is accepted')
+    orderTooltip.style.display = "none";
+    e.preventDefault();
+    alert("Your order is accepted");
   }
 });
-
