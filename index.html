@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="media-queries.css" />
+    
     <link
       href="https://fonts.googleapis.com/css?family=PT+Sans:400,700&subset=cyrillic"
       rel="stylesheet"
@@ -15,21 +18,21 @@
     />
     <title>Document</title>
   </head>
-  <body>
-    <header>
+  <body class="body">
+    <header class="header">
       <div class="logo-container">
-        <img src="src/logo.png" alt="" />
+        <img src="src/logo.png" alt="" class="logo-container__image"/>
       </div>
     </header>
     <main>
-      <section>
-        <h1>Checkout</h1>
+      <section class="section">
+        <h1 class="main-title">Checkout</h1>
         <article class="products-block">
           <div class="title">Products</div>
           <table class="table-block">
             <tr class="table-block__row">
               <td class="table-block__item">
-                <a href="#" class="table-block__item--link">
+                <a href="#" class="table-block__link">
                   Apple&reg - iPad&reg with Retina&reg display Wi-Fi - 32 Gb -
                   White</a
                 >
@@ -38,7 +41,7 @@
             </tr>
             <tr class="table-block__row">
               <td class="table-block__item">
-                <a href="#" class="table-block__item--link">
+                <a href="#" class="table-block__link">
                   16GB A Series Walkman Video MP3</a
                 >
               </td>
@@ -55,7 +58,7 @@
             </tr>
           </table>
         </article>
-        <div class="payment-method">
+        <article class="payment-method">
           <div class="title">Payment method</div>
           <div class="payment-method__tab-container">
             <button
@@ -66,7 +69,7 @@
             <button class="payment-method__tab gift-card-tab">Gift card</button>
             <button class="payment-method__tab pay-pal-tab">PayPal</button>
           </div>
-        </div>
+        
 
         <form action="submit" class="main-form">
           <div class="main-form__type creditcard-block main-form__type--show">
@@ -329,6 +332,7 @@
           </div>
           <button class="accept-block__order-btn">Place order</button>
         </form>
+      </article>
       </section>
     </main>
     <script src="script.js"></script>

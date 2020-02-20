@@ -1,152 +1,23 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
-}
-
-article,
-aside,
-details,
-figcaption,
-figure,
-footer,
-header,
-hgroup,
-menu,
-nav,
-section {
-  display: block;
-}
-body {
-  line-height: 1;
-}
-ol,
-ul {
-  list-style: none;
-}
-blockquote,
-q {
-  quotes: none;
-}
-blockquote:before,
-blockquote:after,
-q:before,
-q:after {
-  content: "";
-  content: none;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-
-body {
+.body {
   background-color: white;
   font-family: "PT Sans", sans-serif;
 }
-section {
+.section {
   width: 644px;
   margin: 0 auto;
   padding-bottom: 60px;
-  /* padding: 30px; */
-}
-
-header {
-  height: 120px;
 }
 
 .logo-container {
   padding-top: 10px;
+  padding-bottom: 76px;
 }
-.logo-container img {
+.logo-container__image {
   display: block;
   margin: 0 auto;
 }
 
-h1 {
+.main-title {
   font-size: 28px;
   font-weight: 700;
   padding-bottom: 32px;
@@ -157,6 +28,7 @@ h1 {
   padding-bottom: 25px;
 }
 
+
 .table-block {
   width: 100%;
   margin-bottom: 19px;
@@ -165,7 +37,7 @@ h1 {
   padding-left: 14px;
   padding-bottom: 20px;
 }
-.table-block__item--link {
+.table-block__link {
   font-size: 16px;
   color: #4169e1;
 }
@@ -253,12 +125,10 @@ h1 {
   margin-top: 20px;
 }
 
-
 .main-form__input--small {
   display: inline-block;
   width: 10%;
   padding: 7px;
-  
 }
 
 .main-form__input--cvv {
@@ -298,8 +168,6 @@ h1 {
   font-size: 18px;
   font-weight: 400;
 }
-
-
 
 .cvv-block {
   display: inline-block;
@@ -364,7 +232,7 @@ h1 {
 }
 .accept-block__input {
   display: inline-block;
-  vertical-align:middle;
+  vertical-align: middle;
 }
 
 .accept-block__order-btn {
@@ -382,20 +250,20 @@ h1 {
   font-weight: 400;
 }
 
-.terms-and-conditions{
+.terms-and-conditions {
   background-color: white;
-  width: 500px;
-  height: 400px;
+  width: 400px;
+  height: 350px;
   font-weight: 400;
   border-radius: 5px;
   font-size: 12px;
   padding: 20px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   display: none;
-  position: absolute;
-  bottom: -155px;
+  position: fixed;
+  bottom: 200px;
   left: 50%;
-  margin-left: -250px;
+  margin-left: -200px;
   overflow: auto;
   color: black;
 }
@@ -404,14 +272,12 @@ h1 {
   font-weight: 500;
   padding-bottom: 20px;
 }
-.terms-and-conditions__cross{
+.terms-and-conditions__cross {
   width: 20px;
   height: 20px;
   float: right;
-  background: url('src/cross.png') 50% 50%;
+  background: url("src/cross.png") 50% 50%;
   background-repeat: no-repeat;
-  background-size: 50%  50%;
+  background-size: 50% 50%;
   margin-right: -10px;
 }
-
-
