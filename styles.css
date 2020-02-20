@@ -264,7 +264,7 @@
   bottom: 200px;
   left: 50%;
   margin-left: -200px;
-  overflow: auto;
+  
   color: black;
 }
 .terms-and-conditions__title {
@@ -275,9 +275,15 @@
 .terms-and-conditions__cross {
   width: 20px;
   height: 20px;
-  float: right;
   background: url("src/cross.png") 50% 50%;
   background-repeat: no-repeat;
   background-size: 50% 50%;
-  margin-right: -10px;
+  margin-right: 0px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+.terms-and-conditions_text{
+  overflow: auto;
+  height: 300px;
 }
