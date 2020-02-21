@@ -16,7 +16,7 @@ let view = {
     arr[2][0].classList.add(arr[3][0]);
     arr[2][1].classList.add(arr[3][1]);
   },
-  openCloseTermsAndCondition: function(arr) {
+  toggleTermsAndCondition: function(arr) {
     arr[0].style.display = arr[1][0];
     document.body.style.overflow = arr[1][1];
   },
@@ -111,14 +111,14 @@ let model = {
     }
     return changeTabArr;
   },
-  openClose: function(status) {
+  toggle: function(status) {
     if (status === "open") {
-      openCloseArr = [this.terms, this.openTermsArr];
+      toggleArr = [this.terms, this.openTermsArr];
     }
     if (status === "close") {
-      openCloseArr = [this.terms, this.closeTermsArr];
+      toggleArr = [this.terms, this.closeTermsArr];
     }
-    return openCloseArr;
+    return toggleArr;
   },
 
   checkValue: function(e, field) {
@@ -186,8 +186,8 @@ let controller = {
     view.switchTab(result);
   },
   handleOpenTermsAndCondition: function(action) {
-    let result = model.openClose(action);
-    view.openCloseTermsAndCondition(result);
+    let result = model.toggle(action);
+    view.toggleTermsAndCondition(result);
   },
   handleInputChange: function(e, field) {
     let showTooltipResult = model.checkValue(e, field);
