@@ -8,7 +8,6 @@ let view = {
 
   switchTab: function(changeTabArr) {
     const qs = document.querySelector.bind(document);
-      
 
     changeTabArr.tabs.forEach(function(item) {
       item.classList.remove(changeTabArr.stylesArr.tabSelectStyle);
@@ -106,20 +105,18 @@ let model = {
     this.totalSum = " ( $" + this.totalSum + " )";
     return this.totalSum;
   },
-  // qs: function(x) {
-  //   document.querySelector(x);
-  // },
 
   checkTab: function(selecedTab) {
     const qs = document.querySelector.bind(document);
-      changeTabArr = {
+    changeTabArr = {
       tabs: this.tabs,
       forms: this.forms,
       stylesArr: this.stylesArr
     };
 
     if (selecedTab === qs(this.creditCardArr.tab)) {
-      console.log("Работает");
+
+      changeTabArr.typeArr = this.creditCardArr;
     }
     if (selecedTab === qs(this.giftCardArr.tab)) {
       changeTabArr.typeArr = this.giftCardArr;
