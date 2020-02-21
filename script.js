@@ -1,121 +1,264 @@
-(function(){
-let creditCardTab = document.querySelector(".credit-card-tab"),
-  giftCardTab = document.querySelector(".gift-card-tab"),
-  payPalTab = document.querySelector(".pay-pal-tab"),
-  creditcardBlock = document.querySelector(".creditcard-block"),
-  giftcardBlock = document.querySelector(".giftcard-block"),
-  paypalBlock = document.querySelector(".paypal-block");
+/* ---------------------------- begin view ----------------------------- */
 
-function switchTab(selectedTab, showForm) {
-  let tabs = document.querySelectorAll(".payment-method__tab");
-  let types = document.querySelectorAll(".main-form__type");
-  tabs.forEach(function(item) {
-    item.classList.remove("payment-method__tab--select");
-  });
-  types.forEach(function(item) {
-    item.classList.remove("main-form__type--show");
-  });
-  selectedTab.classList.add("payment-method__tab--select");
-  showForm.classList.add("main-form__type--show");
-}
+let view = {
+  showTotalSum: function(totalSumToButton) {
+    let button = document.querySelector(".accept-block__order-btn");
+    button.insertAdjacentHTML("beforeEnd", totalSumToButton);
+  },
 
-creditCardTab.addEventListener("click", function() {
-  switchTab(creditCardTab, creditcardBlock);
-});
-giftCardTab.addEventListener("click", function() {
-  switchTab(giftCardTab, giftcardBlock);
-});
-payPalTab.addEventListener("click", function() {
-  switchTab(payPalTab, paypalBlock);
-});
+  switchTab: function(arr) {
+    arr[0].forEach(function(item) {
+      item.classList.remove(arr[3][0]);
+    });
+    arr[1].forEach(function(item) {
+      item.classList.remove(arr[3][1]);
+    });
+    arr[2][0].classList.add(arr[3][0]);
+    arr[2][1].classList.add(arr[3][1]);
+  },
+  openCloseTermsAndCondition: function(arr) {
+    arr[0].style.display = arr[1][0];
+    document.body.style.overflow = arr[1][1];
+  },
 
+  showTooltip: function(arr) {
+    arr[0][1].style.display = arr[1];
+  },
+  inputMask: function() {},
 
-let prices = document.querySelectorAll("tr>td:last-child"),
-  totalSum = 0;
-for (i = 0; i < prices.length; i++) {
-  totalSum += parseFloat(prices[i].innerHTML);
-}
-totalSumToButton = "( $" + totalSum + " )";
-document
-  .querySelector(".accept-block__order-btn")
-  .insertAdjacentHTML("beforeEnd", totalSumToButton);
+  acceptOrder: function(arr) {
+    arr[2];
+  }
+};
 
+/* ----------------------------- end view ------------------------------ */
 
-let cardNumber = document.querySelector("#card-number"),
-  validThruMm = document.querySelector("#valid-thru-mm"),
-  validThruYy = document.querySelector("#valid-thru-yy"),
-  cardholdersName = document.querySelector("#cardholders-name"),
-  ccvvCvc = document.querySelector("#cvv-cvc"),
-  orderBtn = document.querySelector(".accept-block__order-btn"),
-  cardnumberTooltip = document.querySelector("#cardnumberTooltip"),
-  validThruTooltip = document.querySelector("#validThruTooltip"),
-  cvvCvcTooltip = document.querySelector("#cvvCvcTooltip"),
-  orderTooltip = document.querySelector("#orderTooltip");
+/* ---------------------------- begin model ---------------------------- */
 
+let model = {
+  totalSum: 0,
+  tabs: document.querySelectorAll(".payment-method__tab"),
+  types: document.querySelectorAll(".main-form__type"),
+  creditCardArr: [
+    document.querySelector(".credit-card-tab"),
+    document.querySelector(".creditcard-block")
+  ],
+  giftCardArr: [
+    document.querySelector(".gift-card-tab"),
+    document.querySelector(".giftcard-block")
+  ],
+  paypalArr: [
+    document.querySelector(".pay-pal-tab"),
+    document.querySelector(".paypal-block")
+  ],
+  stylesArr: ["payment-method__tab--select", "main-form__type--show"],
+  terms: document.querySelector(".terms-and-conditions"),
+  openTermsArr: ["block", "hidden"],
+  closeTermsArr: ["none", "visible"],
+  ccvvCvcArr: [
+    document.querySelector("#cvv-cvc"),
+    document.querySelector("#cvvCvcTooltip"),
+    3
+  ],
+  validThruYyArr: [
+    document.querySelector("#valid-thru-yy"),
+    document.querySelector("#validThruTooltip"),
+    2
+  ],
+  validThruMmArr: [
+    document.querySelector("#valid-thru-mm"),
+    document.querySelector("#validThruTooltip"),
+    2
+  ],
+  cardNumberArr: [
+    document.querySelector("#card-number"),
+    document.querySelector("#cardnumberTooltip"),
+    19
+  ],
+  cardholdersName: document.querySelector("#cardholders-name"),
 
-function checkValue(e, tooltip, field, maxlenght) {
-  if (field.value.length < maxlenght) {
-    if (!/\d/.test(e.key)) {
-      e.preventDefault();
-      tooltip.style.display = "block";
-    } else {
-      tooltip.style.display = "none";
+  tooltipStatus: ["block", "none"],
+
+  orderBtnArr: [
+    document.querySelector(".accept-block__order-btn"),
+    document.querySelector("#orderTooltip")
+  ],
+  accept: document.querySelector("#accept"),
+
+  calculateTotalSum: function() {
+    let prices = document.querySelectorAll("tr>td:last-child");
+    for (i = 0; i < prices.length; i++) {
+      this.totalSum += parseFloat(prices[i].innerHTML);
     }
-  }
-}
+    this.totalSum = " ( $" + this.totalSum + " )";
+    return this.totalSum;
+  },
 
-cardNumber.addEventListener("keypress", e => {
-  if (
-    (cardNumber.value.length + 1) % 5 === 0 &&
-    cardNumber.value.length + 1 < 19
-  ) {
-    cardNumber.value += " ";
-  }
-  checkValue(e, cardnumberTooltip, cardNumber, 19);
-});
+  checkTab: function(selecedTab) {
+    if (selecedTab === this.creditCardArr[0]) {
+      changeTabArr = [
+        this.tabs,
+        this.types,
+        this.creditCardArr,
+        this.stylesArr
+      ];
+    }
+    if (selecedTab === this.giftCardArr[0]) {
+      changeTabArr = [this.tabs, this.types, this.giftCardArr, this.stylesArr];
+    }
+    if (selecedTab === this.paypalArr[0]) {
+      changeTabArr = [this.tabs, this.types, this.paypalArr, this.stylesArr];
+    }
+    return changeTabArr;
+  },
+  openClose: function(status) {
+    if (status === "open") {
+      openCloseArr = [this.terms, this.openTermsArr];
+    }
+    if (status === "close") {
+      openCloseArr = [this.terms, this.closeTermsArr];
+    }
+    return openCloseArr;
+  },
 
-validThruMm.addEventListener("keypress", e => {
-  checkValue(e, validThruTooltip, validThruMm, 2);
-});
-validThruYy.addEventListener("keypress", e => {
-  checkValue(e, validThruTooltip, validThruYy, 2);
-});
+  checkValue: function(e, field) {
+    if (field === this.ccvvCvcArr[0]) {
+      checkArr = this.ccvvCvcArr;
+    } else if (field === this.validThruYyArr[0]) {
+      checkArr = this.validThruYyArr;
+    } else if (field === this.validThruMmArr[0]) {
+      checkArr = this.validThruMmArr;
+    } else if (field === this.cardNumberArr[0]) {
+      checkArr = this.cardNumberArr;
+    }
 
-ccvvCvc.addEventListener("keypress", e => {
-  checkValue(e, cvvCvcTooltip, ccvvCvc, 3);
-});
-
-let terms = document.querySelector("#terms"),
-  termsAndConditions = document.querySelector(".terms-and-conditions"),
-  cross = document.querySelector(".terms-and-conditions__cross"),
-  accept = document.querySelector("#accept");
-
-terms.addEventListener("click", function() {
-  termsAndConditions.style.display = "block";
-  document.body.style.overflow = "hidden";
-});
-
-cross.addEventListener("click", function(){
-  termsAndConditions.style.display = "none";
-  document.body.style.overflow = "visible";
-});
-
-
-orderBtn.addEventListener("click", e => {
-  if (
-    cardNumber.value.length < 19 ||
-    validThruMm.value.length < 2 ||
-    validThruYy.value.length < 2 ||
-    ccvvCvc.value.length < 3 ||
-    cardholdersName.value.length < 5 ||
-    accept.checked == false
-  ) {
-    e.preventDefault();
-    orderTooltip.style.display = "block";
-  } else {
-    orderTooltip.style.display = "none";
-    e.preventDefault();
+    if (checkArr[0].value.length < checkArr[2]) {
+      if (!/\d/.test(e.key)) {
+        e.preventDefault();
+        showHideTooltipArr = [checkArr, this.tooltipStatus[0]];
+      } else {
+        showHideTooltipArr = [checkArr, this.tooltipStatus[1]];
+      }
+      return showHideTooltipArr;
+    }
+  },
+  delimiterCounter: function() {
+    if (
+      (this.cardNumberArr[0].value.length + 1) % 5 === 0 &&
+      this.cardNumberArr[0].value.length + 1 < 19
+    ) {
+      return (this.cardNumberArr[0].value += " ");
+    }
+  },
+  message: function() {
     alert("Your order is accepted");
+  },
+  formChecker: function(e) {
+    if (
+      this.cardNumberArr[0].value.length < 19 ||
+      this.validThruMmArr[0].value.length < 2 ||
+      this.validThruYyArr[0].value.length < 2 ||
+      this.ccvvCvcArr[0].value.length < 3 ||
+      this.cardholdersName.value.length < 5 ||
+      this.accept.checked == false
+    ) {
+      e.preventDefault();
+      formArr = [this.orderBtnArr, this.tooltipStatus[0]];
+    } else {
+      formArr = [this.orderBtnArr, this.tooltipStatus[1], this.message()];
+      e.preventDefault();
+    }
+    return formArr;
   }
-});
+};
+
+/* ----------------------------- end model ----------------------------- */
+
+/* -------------------------- begin controller ------------------------- */
+
+let controller = {
+  onLoad: function() {
+    let result = model.calculateTotalSum();
+    view.showTotalSum(result);
+  },
+  handleChangeTab: function(selecedTab) {
+    let result = model.checkTab(selecedTab);
+    view.switchTab(result);
+  },
+  handleOpenTermsAndCondition: function(action) {
+    let result = model.openClose(action);
+    view.openCloseTermsAndCondition(result);
+  },
+  handleInputChange: function(e, field) {
+    let showTooltipResult = model.checkValue(e, field);
+    let inputMaskResult = model.delimiterCounter(e);
+    view.showTooltip(showTooltipResult);
+    view.inputMask(inputMaskResult);
+  },
+  handleClickOrder: function(e) {
+    let result = model.formChecker(e);
+    view.acceptOrder(result);
+    view.showTooltip(result);
+  }
+};
+
+/* --------------------------- end controller -------------------------- */
+
+/* --------------------- anonymous initialize function ----------------- */
+(function() {
+  let app = {
+    init: function() {
+      this.main();
+      this.event();
+    },
+    main: function() {},
+    event: function() {
+      const giftCardTab = document.querySelector(".gift-card-tab"),
+        payPalTab = document.querySelector(".pay-pal-tab"),
+        creditCardTab = document.querySelector(".credit-card-tab"),
+        terms = document.querySelector("#terms"),
+        cross = document.querySelector(".terms-and-conditions__cross"),
+        cardNumber = document.querySelector("#card-number"),
+        validThruMm = document.querySelector("#valid-thru-mm"),
+        validThruYy = document.querySelector("#valid-thru-yy"),
+        ccvvCvc = document.querySelector("#cvv-cvc"),
+        orderBtn = document.querySelector(".accept-block__order-btn");
+
+      giftCardTab.addEventListener("click", () => {
+        controller.handleChangeTab(giftCardTab);
+      });
+      payPalTab.addEventListener("click", () => {
+        controller.handleChangeTab(payPalTab);
+      });
+      creditCardTab.addEventListener("click", () => {
+        controller.handleChangeTab(creditCardTab);
+      });
+      terms.addEventListener("click", () => {
+        controller.handleOpenTermsAndCondition("open");
+      });
+      cross.addEventListener("click", () => {
+        controller.handleOpenTermsAndCondition("close");
+      });
+      ccvvCvc.addEventListener("keypress", e => {
+        controller.handleInputChange(e, ccvvCvc);
+      });
+      validThruYy.addEventListener("keypress", e => {
+        controller.handleInputChange(e, validThruYy);
+      });
+      validThruMm.addEventListener("keypress", e => {
+        controller.handleInputChange(e, validThruMm);
+      });
+      cardNumber.addEventListener("keypress", e => {
+        controller.handleInputChange(e, cardNumber);
+      });
+      orderBtn.addEventListener("click", e => {
+        controller.handleClickOrder(e);
+      });
+      window.onload = controller.onLoad;
+    }
+  };
+
+  app.init();
 })();
+/* --------------------- anonymous initialize function ----------------- */
+
