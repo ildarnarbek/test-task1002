@@ -6,15 +6,22 @@ let view = {
     button.insertAdjacentHTML("beforeEnd", totalSumToButton);
   },
 
-  switchTab: function(arr) {
-    arr[0].forEach(function(item) {
-      item.classList.remove(arr[3][0]);
+  switchTab: function(changeTabArr) {
+    const qs = document.querySelector.bind(document);
+      
+
+    changeTabArr.tabs.forEach(function(item) {
+      item.classList.remove(changeTabArr.stylesArr.tabSelectStyle);
     });
-    arr[1].forEach(function(item) {
-      item.classList.remove(arr[3][1]);
+    changeTabArr.forms.forEach(function(item) {
+      item.classList.remove(changeTabArr.stylesArr.formSelectStyle);
     });
-    arr[2][0].classList.add(arr[3][0]);
-    arr[2][1].classList.add(arr[3][1]);
+    qs(changeTabArr.typeArr.tab).classList.add(
+      changeTabArr.stylesArr.tabSelectStyle
+    );
+    qs(changeTabArr.typeArr.block).classList.add(
+      changeTabArr.stylesArr.formSelectStyle
+    );
   },
   toggleTermsAndCondition: function(arr) {
     arr[0].style.display = arr[1][0];
@@ -38,20 +45,26 @@ let view = {
 let model = {
   totalSum: 0,
   tabs: document.querySelectorAll(".payment-method__tab"),
-  types: document.querySelectorAll(".main-form__type"),
-  creditCardArr: [
-    document.querySelector(".credit-card-tab"),
-    document.querySelector(".creditcard-block")
-  ],
-  giftCardArr: [
-    document.querySelector(".gift-card-tab"),
-    document.querySelector(".giftcard-block")
-  ],
-  paypalArr: [
-    document.querySelector(".pay-pal-tab"),
-    document.querySelector(".paypal-block")
-  ],
-  stylesArr: ["payment-method__tab--select", "main-form__type--show"],
+  forms: document.querySelectorAll(".main-form__type"),
+
+  creditCardArr: {
+    tab: ".credit-card-tab",
+    block: ".creditcard-block"
+  },
+
+  giftCardArr: {
+    tab: ".gift-card-tab",
+    block: ".giftcard-block"
+  },
+  paypalArr: {
+    tab: ".pay-pal-tab",
+    block: ".paypal-block"
+  },
+  stylesArr: {
+    tabSelectStyle: "payment-method__tab--select",
+    formSelectStyle: "main-form__type--show"
+  },
+
   terms: document.querySelector(".terms-and-conditions"),
   openTermsArr: ["block", "hidden"],
   closeTermsArr: ["none", "visible"],
@@ -93,24 +106,31 @@ let model = {
     this.totalSum = " ( $" + this.totalSum + " )";
     return this.totalSum;
   },
+  // qs: function(x) {
+  //   document.querySelector(x);
+  // },
 
   checkTab: function(selecedTab) {
-    if (selecedTab === this.creditCardArr[0]) {
-      changeTabArr = [
-        this.tabs,
-        this.types,
-        this.creditCardArr,
-        this.stylesArr
-      ];
+    const qs = document.querySelector.bind(document);
+      changeTabArr = {
+      tabs: this.tabs,
+      forms: this.forms,
+      stylesArr: this.stylesArr
+    };
+
+    if (selecedTab === qs(this.creditCardArr.tab)) {
+      console.log("Работает");
     }
-    if (selecedTab === this.giftCardArr[0]) {
-      changeTabArr = [this.tabs, this.types, this.giftCardArr, this.stylesArr];
+    if (selecedTab === qs(this.giftCardArr.tab)) {
+      changeTabArr.typeArr = this.giftCardArr;
     }
-    if (selecedTab === this.paypalArr[0]) {
-      changeTabArr = [this.tabs, this.types, this.paypalArr, this.stylesArr];
+    if (selecedTab === qs(this.paypalArr.tab)) {
+      changeTabArr.typeArr = this.paypalArr;
     }
+
     return changeTabArr;
   },
+
   toggle: function(status) {
     if (status === "open") {
       toggleArr = [this.terms, this.openTermsArr];
@@ -183,6 +203,8 @@ let controller = {
   },
   handleChangeTab: function(selecedTab) {
     let result = model.checkTab(selecedTab);
+    console.log("результат возврата" + result);
+    console.log("результат возврата" + result.tabs);
     view.switchTab(result);
   },
   handleOpenTermsAndCondition: function(action) {
@@ -261,4 +283,3 @@ let controller = {
   app.init();
 })();
 /* --------------------- anonymous initialize function ----------------- */
-
