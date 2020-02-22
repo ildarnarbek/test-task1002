@@ -27,8 +27,9 @@ let view = {
     document.body.style.overflow = toggleArr.styles.overflow;
   },
 
-  showTooltip: function(tooltipArr) {
-    tooltipArr.tooltipId.style.display = tooltipArr.status;
+  showTooltip: function(tooltipArr) {  
+    const qs = document.querySelector.bind(document);
+    qs(tooltipArr.tooltipId).style.display = tooltipArr.status;
   },
   inputMask: function() {},
 
@@ -45,6 +46,11 @@ let model = {
   totalSum: 0,
   tabs: document.querySelectorAll(".payment-method__tab"),
   forms: document.querySelectorAll(".main-form__type"),
+  terms: ".terms-and-conditions",
+  accept: "#accept",
+  cardholdersName: "#cardholders-name",
+  openTermsArr: { display: "block", overflow: "hidden" },
+  closeTermsArr: { display: "none", overflow: "visible" },
 
   creditCardArr: {
     tab: ".credit-card-tab",
@@ -64,42 +70,37 @@ let model = {
     formSelectStyle: "main-form__type--show"
   },
 
-  terms: document.querySelector(".terms-and-conditions"),
-  openTermsArr: { display: "block", overflow: "hidden" },
-  closeTermsArr: { display: "none", overflow: "visible" },
-
   ccvvCvcArr: {
-    fieldId: document.querySelector("#cvv-cvc"),
-    tooltipId: document.querySelector("#cvvCvcTooltip"),
+    fieldId: "#cvv-cvc",
+    tooltipId: "#cvvCvcTooltip",
     maxLength: 3
   },
   validThruYyArr: {
-    fieldId: document.querySelector("#valid-thru-yy"),
-    tooltipId: document.querySelector("#validThruTooltip"),
+    fieldId: "#valid-thru-yy",
+    tooltipId: "#validThruTooltip",
     maxLength: 2
   },
   validThruMmArr: {
-    fieldId: document.querySelector("#valid-thru-mm"),
-    tooltipId: document.querySelector("#validThruTooltip"),
+    fieldId: "#valid-thru-mm",
+    tooltipId: "#validThruTooltip",
     maxLength: 2
   },
   cardNumberArr: {
-    fieldId: document.querySelector("#card-number"),
-    tooltipId: document.querySelector("#cardnumberTooltip"),
+    fieldId: "#card-number",
+    tooltipId: "#cardnumberTooltip",
     maxLength: 19
   },
-  cardholdersName: document.querySelector("#cardholders-name"),
-
+  
   tooltipStatus: {
     on: "block",
     off: "none"
   },
 
   orderBtnArr: {
-    fieldId: document.querySelector(".accept-block__order-btn"),
-    tooltipId: document.querySelector("#orderTooltip")
+    fieldId: ".accept-block__order-btn",
+    tooltipId: "#orderTooltip",
   },
-  accept: document.querySelector("#accept"),
+  
 
   calculateTotalSum: function() {
     let prices = document.querySelectorAll("tr>td:last-child");
@@ -132,34 +133,36 @@ let model = {
   },
 
   toggleTermsAndCondition: function(status) {
+    const qs = document.querySelector.bind(document);
     switch (status) {
       case "open":
-        toggleArr = { terms: this.terms, styles: this.openTermsArr };
+        toggleArr = { terms: qs(this.terms), styles: this.openTermsArr };
         break;
       case "close":
-        toggleArr = { terms: this.terms, styles: this.closeTermsArr };
+        toggleArr = { terms: qs(this.terms), styles: this.closeTermsArr };
         break;
     }
     return toggleArr;
   },
 
   checkValue: function(e, field) {
+    const qs = document.querySelector.bind(document);
     tooltipArr = {
       fieldId: "",
       tooltipId: "",
       maxLength: ""
     };
-    if (field === this.ccvvCvcArr.fieldId) {
+    if (field === qs(this.ccvvCvcArr.fieldId)) {
       tooltipArr = this.ccvvCvcArr;
-    } else if (field === this.validThruYyArr.fieldId) {
+    } else if (field === qs(this.validThruYyArr.fieldId)) {
       tooltipArr = this.validThruYyArr;
-    } else if (field === this.validThruMmArr.fieldId) {
+    } else if (field === qs(this.validThruMmArr.fieldId)) {
       tooltipArr = this.validThruMmArr;
-    } else if (field === this.cardNumberArr.fieldId) {
+    } else if (field === qs(this.cardNumberArr.fieldId)) {
       tooltipArr = this.cardNumberArr;
     }
 
-    if (tooltipArr.fieldId.value.length < tooltipArr.maxLength) {
+    if (qs(tooltipArr.fieldId).value.length < tooltipArr.maxLength) {
       if (!/\d/.test(e.key)) {
         e.preventDefault();
         tooltipArr.status = this.tooltipStatus.on;
@@ -170,29 +173,31 @@ let model = {
     }
   },
   delimiterCounter: function() {
+    const qs = document.querySelector.bind(document);
     if (
-      (this.cardNumberArr.fieldId.value.length + 1) % 5 === 0 &&
-      this.cardNumberArr.fieldId.value.length + 1 < 19
+      (qs(this.cardNumberArr.fieldId).value.length + 1) % 5 === 0 &&
+      qs(this.cardNumberArr.fieldId).value.length + 1 < 19
     ) {
-      return (this.cardNumberArr.fieldId.value += " ");
+      return (qs(this.cardNumberArr.fieldId).value += " ");
     }
   },
   message: function() {
     alert("Your order is accepted");
   },
   formChecker: function(e) {
+    const qs = document.querySelector.bind(document);
     formArr = {
       tooltipId: this.orderBtnArr.tooltipId,
       status: ""
     };
 
     if (
-      this.cardNumberArr.fieldId.value.length < this.cardNumberArr.maxLength ||
-      this.validThruMmArr.fieldId.value.length < this.validThruMmArr.maxLength ||
-      this.validThruYyArr.fieldId.value.length < this.validThruYyArr.maxLength ||
-      this.ccvvCvcArr.fieldId.value.length < this.ccvvCvcArr.maxLength ||
-      this.cardholdersName.value.length < 5 ||
-      this.accept.checked == false
+      qs(this.cardNumberArr.fieldId).value.length < this.cardNumberArr.maxLength ||
+      qs(this.validThruMmArr.fieldId).value.length < this.validThruMmArr.maxLength ||
+      qs(this.validThruYyArr.fieldId).value.length < this.validThruYyArr.maxLength ||
+      qs(this.ccvvCvcArr.fieldId).value.length < this.ccvvCvcArr.maxLength ||
+      qs(this.cardholdersName).value.length < 5 ||
+      qs(this.accept).checked == false
     ) {
       e.preventDefault();
       formArr.status = this.tooltipStatus.on;
