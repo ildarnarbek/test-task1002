@@ -22,9 +22,9 @@ let view = {
       changeTabArr.stylesArr.formSelectStyle
     );
   },
-  toggleTermsAndCondition: function(arr) {
-    arr[0].style.display = arr[1][0];
-    document.body.style.overflow = arr[1][1];
+  toggleTermsAndCondition: function(toggleArr) {
+    toggleArr.terms.style.display = toggleArr.styles.display;
+    document.body.style.overflow = toggleArr.styles.overflow;
   },
 
   showTooltip: function(arr) {
@@ -65,8 +65,9 @@ let model = {
   },
 
   terms: document.querySelector(".terms-and-conditions"),
-  openTermsArr: ["block", "hidden"],
-  closeTermsArr: ["none", "visible"],
+  openTermsArr: { display: "block", overflow: "hidden" },
+  closeTermsArr: { display: "none", overflow: "visible" },
+
   ccvvCvcArr: [
     document.querySelector("#cvv-cvc"),
     document.querySelector("#cvvCvcTooltip"),
@@ -113,8 +114,8 @@ let model = {
       forms: this.forms,
       stylesArr: this.stylesArr
     };
-    switch(selecedTab) {
-      case qs(this.creditCardArr.tab): 
+    switch (selecedTab) {
+      case qs(this.creditCardArr.tab):
         changeTabArr.typeArr = this.creditCardArr;
         break;
       case qs(this.giftCardArr.tab):
@@ -123,16 +124,16 @@ let model = {
       case qs(this.paypalArr.tab):
         changeTabArr.typeArr = this.paypalArr;
         break;
-    };
+    }
     return changeTabArr;
   },
 
   toggleTermsAndCondition: function(status) {
     if (status === "open") {
-      toggleArr = [this.terms, this.openTermsArr];
+      toggleArr = { terms: this.terms, styles: this.openTermsArr };
     }
     if (status === "close") {
-      toggleArr = [this.terms, this.closeTermsArr];
+      toggleArr = { terms: this.terms, styles: this.closeTermsArr };
     }
     return toggleArr;
   },
