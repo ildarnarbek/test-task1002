@@ -258,6 +258,7 @@
   .form__fieldset--accept {
     padding: 10px;
   }
+  
   .accept-block__input {
     display: inline-block;
     vertical-align: middle;
@@ -395,10 +396,16 @@
     margin-left: 0px;
     box-sizing: border-box;
   }
+  .products-block,
+  .shipping-block,
+  .payment-method {
+    padding: 15px;
+  }
   .terms-and-conditions_text {
     overflow: scroll;
     height: 120px;
   }
+  
   .terms-and-conditions__cross {
     right: 7px;
     top: 7px;
@@ -419,6 +426,11 @@
     left: 0;
     margin-left: 0px;
     box-sizing: border-box;
+  }
+  .products-block,
+  .shipping-block,
+  .payment-method {
+    padding: 15px;
   }
   .terms-and-conditions_text {
     overflow: scroll;
