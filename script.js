@@ -113,22 +113,21 @@ let model = {
       forms: this.forms,
       stylesArr: this.stylesArr
     };
-
-    if (selecedTab === qs(this.creditCardArr.tab)) {
-
-      changeTabArr.typeArr = this.creditCardArr;
-    }
-    if (selecedTab === qs(this.giftCardArr.tab)) {
-      changeTabArr.typeArr = this.giftCardArr;
-    }
-    if (selecedTab === qs(this.paypalArr.tab)) {
-      changeTabArr.typeArr = this.paypalArr;
-    }
-
+    switch(selecedTab) {
+      case qs(this.creditCardArr.tab): 
+        changeTabArr.typeArr = this.creditCardArr;
+        break;
+      case qs(this.giftCardArr.tab):
+        changeTabArr.typeArr = this.giftCardArr;
+        break;
+      case qs(this.paypalArr.tab):
+        changeTabArr.typeArr = this.paypalArr;
+        break;
+    };
     return changeTabArr;
   },
 
-  toggle: function(status) {
+  toggleTermsAndCondition: function(status) {
     if (status === "open") {
       toggleArr = [this.terms, this.openTermsArr];
     }
@@ -205,7 +204,7 @@ let controller = {
     view.switchTab(result);
   },
   handleOpenTermsAndCondition: function(action) {
-    let result = model.toggle(action);
+    let result = model.toggleTermsAndCondition(action);
     view.toggleTermsAndCondition(result);
   },
   handleInputChange: function(e, field) {
