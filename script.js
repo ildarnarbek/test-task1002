@@ -8,7 +8,6 @@ let view = {
 
   switchTab: function(changeTabArr) {
     const qs = document.querySelector.bind(document);
-
     changeTabArr.tabs.forEach(function(item) {
       item.classList.remove(changeTabArr.stylesArr.tabSelectStyle);
     });
@@ -27,14 +26,14 @@ let view = {
     document.body.style.overflow = toggleArr.styles.overflow;
   },
 
-  showTooltip: function(tooltipArr) {  
+  showTooltip: function(tooltipArr) {
     const qs = document.querySelector.bind(document);
     qs(tooltipArr.tooltipId).style.display = tooltipArr.status;
   },
   inputMask: function() {},
 
-  acceptOrder: function(arr) {
-    arr.alert;
+  acceptOrder: function(tooltipArr) {
+    tooltipArr.alert;
   }
 };
 
@@ -90,17 +89,14 @@ let model = {
     tooltipId: "#cardnumberTooltip",
     maxLength: 19
   },
-  
   tooltipStatus: {
     on: "block",
     off: "none"
   },
-
   orderBtnArr: {
     fieldId: ".accept-block__order-btn",
-    tooltipId: "#orderTooltip",
+    tooltipId: "#orderTooltip"
   },
-  
 
   calculateTotalSum: function() {
     let prices = document.querySelectorAll("tr>td:last-child");
@@ -152,14 +148,19 @@ let model = {
       tooltipId: "",
       maxLength: ""
     };
-    if (field === qs(this.ccvvCvcArr.fieldId)) {
+    switch (field) {
+      case qs(this.ccvvCvcArr.fieldId):
       tooltipArr = this.ccvvCvcArr;
-    } else if (field === qs(this.validThruYyArr.fieldId)) {
-      tooltipArr = this.validThruYyArr;
-    } else if (field === qs(this.validThruMmArr.fieldId)) {
-      tooltipArr = this.validThruMmArr;
-    } else if (field === qs(this.cardNumberArr.fieldId)) {
-      tooltipArr = this.cardNumberArr;
+      break;
+      case qs(this.validThruYyArr.fieldId):
+        tooltipArr = this.validThruYyArr;
+      break;
+      case qs(this.validThruMmArr.fieldId):
+        tooltipArr = this.validThruMmArr;
+      break;
+      case qs(this.cardNumberArr.fieldId):
+        tooltipArr = this.cardNumberArr;
+      break;
     }
 
     if (qs(tooltipArr.fieldId).value.length < tooltipArr.maxLength) {
@@ -176,7 +177,8 @@ let model = {
     const qs = document.querySelector.bind(document);
     if (
       (qs(this.cardNumberArr.fieldId).value.length + 1) % 5 === 0 &&
-      qs(this.cardNumberArr.fieldId).value.length + 1 < 19
+      qs(this.cardNumberArr.fieldId).value.length + 1 <
+        this.cardNumberArr.maxLength
     ) {
       return (qs(this.cardNumberArr.fieldId).value += " ");
     }
@@ -192,9 +194,12 @@ let model = {
     };
 
     if (
-      qs(this.cardNumberArr.fieldId).value.length < this.cardNumberArr.maxLength ||
-      qs(this.validThruMmArr.fieldId).value.length < this.validThruMmArr.maxLength ||
-      qs(this.validThruYyArr.fieldId).value.length < this.validThruYyArr.maxLength ||
+      qs(this.cardNumberArr.fieldId).value.length <
+        this.cardNumberArr.maxLength ||
+      qs(this.validThruMmArr.fieldId).value.length <
+        this.validThruMmArr.maxLength ||
+      qs(this.validThruYyArr.fieldId).value.length <
+        this.validThruYyArr.maxLength ||
       qs(this.ccvvCvcArr.fieldId).value.length < this.ccvvCvcArr.maxLength ||
       qs(this.cardholdersName).value.length < 5 ||
       qs(this.accept).checked == false
